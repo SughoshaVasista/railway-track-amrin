@@ -1,35 +1,35 @@
 :root {
-  --bg: #F4F3EF;
-  --surface: #FFFFFF;
-  --surface-2: #ECEAE4;
-  --border: #D9D7D0;
-  --text: #16181A;
-  --muted: #5E646B;
-  --ink: #16181A;
-  --ink-text: #FFFFFF;
-  --signal-s1: #5AA9E6;
-  --signal-s2: #F2A93B;
-  --signal-s3: #D62839;
-  --signal-green: #35C48C;
-  --signal-s1-text: #1D6FB8;
-  --signal-s2-text: #8A5300;
-  --signal-s3-text: #B3202F;
+  --bg: #f4f3ef;
+  --surface: #ffffff;
+  --surface-2: #eceae4;
+  --border: #d9d7d0;
+  --text: #16181a;
+  --muted: #5e646b;
+  --ink: #16181a;
+  --ink-text: #ffffff;
+  --signal-s1: #5aa9e6;
+  --signal-s2: #f2a93b;
+  --signal-s3: #d62839;
+  --signal-green: #35c48c;
+  --signal-s1-text: #1d6fb8;
+  --signal-s2-text: #8a5300;
+  --signal-s3-text: #b3202f;
   --radius: 4px;
-  --font-body: 'IBM Plex Sans', sans-serif;
-  --font-heading: 'IBM Plex Sans Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
 }
 
 :root[data-theme='dark'] {
-  --bg: #0F1113;
-  --surface: #16191C;
-  --surface-2: #1D2125;
-  --border: #2A2F35;
-  --text: #E8EAEC;
-  --muted: #8A9199;
-  --ink: #E8EAEC;
-  --ink-text: #0F1113;
-  --signal-s1-text: #5AA9E6;
-  --signal-s2-text: #F2A93B;
-  --signal-s3-text: #D62839;
+  --bg: #0b1220;
+  --surface: #131b2c;
+  --surface-2: #18243a;
+  --border: #26324a;
+  --text: #e7ecf5;
+  --muted: #8c99b3;
+  --ink: #4c8dff;
+  --ink-text: #ffffff;
+  --signal-s1-text: #5aa9e6;
+  --signal-s2-text: #f2a93b;
+  --signal-s3-text: #ff8792;
 }

@@ -1,0 +1,1224 @@
+ .env.example                                       |    9 [32m+[m[31m-[m
+ .github/workflows/ci.yml                           |   39 [32m+[m
+ .gitignore                                         |    2 [32m+[m
+ .prettierrc.json                                   |    5 [32m+[m
+ New Text Document.txt                              |    0
+ README.md                                          |   16 [32m+[m[31m-[m
+ ZEfb3cJOGf5v3IQGv35HLEXUmyej3UZvlBZ.txt            |    2 [32m+[m
+ backend.zip                                        |  Bin [31m0[m -> [32m378613041[m bytes
+ backend/.env.example                               |   13 [32m+[m[31m-[m
+ backend/README.md                                  |    3 [32m+[m
+ backend/admin.example.json                         |    6 [32m+[m
+ ...240c9d17a_password_recovery_and_auth_version.py |   36 [32m+[m
+ backend/app.rar                                    |  Bin [31m0[m -> [32m238732[m bytes
+ backend/app/api/routers/auth.py                    |   94 [32m+[m[31m-[m
+ backend/app/api/routers/ml_ingest.py               |  278 [32m+[m[31m-[m
+ backend/app/api/routers/operations.py              |   63 [32m+[m[31m-[m
+ backend/app/api/routers/telemetry.py               |  168 [32m+[m[31m-[m
+ backend/app/api/routers/users.py                   |   83 [32m+[m[31m-[m
+ backend/app/cli.py                                 |  114 [32m+[m[31m-[m
+ backend/app/config.py                              |   14 [32m+[m[31m-[m
+ backend/app/main.py                                |    4 [32m+[m
+ backend/app/models/__init__.py                     |    2 [32m+[m
+ backend/app/models/entities.py                     |   11 [32m+[m
+ backend/app/schemas/auth.py                        |   14 [32m+[m
+ backend/app/schemas/ml.py                          |    4 [32m+[m[31m-[m
+ backend/app/schemas/serializers.py                 |    7 [32m+[m
+ backend/app/schemas/telemetry.py                   |    3 [32m+[m[31m-[m
+ backend/app/security/dependencies.py               |    1 [32m+[m
+ backend/app/services/demo_seed.py                  |  208 [32m+[m[31m-[m
+ backend/app/services/local_vision.py               |  100 [32m+[m
+ backend/create-admin.ps1                           |   16 [32m+[m
+ backend/requirements-vision.txt                    |    2 [32m+[m
+ backend/requirements.txt                           |   26 [32m+[m[31m-[m
+ backend/tests/test_ml_camera_flow.py               |   77 [32m+[m
+ backend/tests/test_password_recovery.py            |   86 [32m+[m
+ backend/tests/test_task_review_workflow.py         |  239 [32m++[m
+ dashboard-screenshot.png                           |  Bin [31m0[m -> [32m226897[m bytes
+ data/raw/wh1-buv5v-v1-retry/README.dataset.txt     |   56 [32m+[m
+ data/raw/wh1-buv5v-v1-retry/README.roboflow.txt    |   32 [32m+[m
+ data/raw/wh1-buv5v-v1-retry/data.yaml              |   16 [32m+[m
+ ...15-_jpg.rf.780703d06b9f28e9e3979dfd1ce6a5fd.jpg |  Bin [31m0[m -> [32m42800[m bytes
+ ...17-_jpg.rf.d96a38205c47af272c9525e5fa28a653.jpg |  Bin [31m0[m -> [32m40401[m bytes
+ ...20-_jpg.rf.cf9ce07f815c88b977048692b39ccc86.jpg |  Bin [31m0[m -> [32m27286[m bytes
+ ...22-_jpg.rf.2015ef509ca5be40625c6e6580385aa7.jpg |  Bin [31m0[m -> [32m27349[m bytes
+ ...35-_jpg.rf.4bea15d552c08c9af725bf41e86a1bb4.jpg |  Bin [31m0[m -> [32m31346[m bytes
+ ...04-_jpg.rf.7ae03009c1172b6a03cf9588989cb61f.jpg |  Bin [31m0[m -> [32m37723[m bytes
+ ...40-_jpg.rf.ca8a6502ffa1791741de64ff236f0565.jpg |  Bin [31m0[m -> [32m32454[m bytes
+ ...68-_jpg.rf.8f252cb220e8e5035b998a9e9ba05abe.jpg |  Bin [31m0[m -> [32m88575[m bytes
+ ...75-_jpg.rf.dadb2aa89003afd96b60ba1f8d3897c1.jpg |  Bin [31m0[m -> [32m106635[m bytes
+ ...88-_jpg.rf.957121f0bf8c7186c8e41b18157bd0f8.jpg |  Bin [31m0[m -> [32m95560[m bytes
+ ...97-_jpg.rf.2481db8dcdda6df2a71447714671c836.jpg |  Bin [31m0[m -> [32m40312[m bytes
+ ...36-_jpg.rf.16d156499f11dde6d11d9ab603e354e2.jpg |  Bin [31m0[m -> [32m35776[m bytes
+ ...19-_jpg.rf.68eabb7a7d4a61fee00371bc1e13948c.jpg |  Bin [31m0[m -> [32m39152[m bytes
+ ...JPG_jpg.rf.ece621dc07e30da8a9e12f127b618407.jpg |  Bin [31m0[m -> [32m52287[m bytes
+ ...59-_jpg.rf.fa73d265fe2aa32809088f999b6c9d14.jpg |  Bin [31m0[m -> [32m22165[m bytes
+ ...93-_jpg.rf.d7c8bfd0fa16c246e4dc2ce0ffd3c600.jpg |  Bin [31m0[m -> [32m28781[m bytes
+ ...02-_jpg.rf.56c38287a86d7e013051544b95f11441.jpg |  Bin [31m0[m -> [32m16794[m bytes
+ ...JPG_jpg.rf.4c2c43dcd2d61135afa2adf2044e3365.jpg |  Bin [31m0[m -> [32m78318[m bytes
+ ...JPG_jpg.rf.2d17b56e7c6c41dd5a9e1265e2ea5ef2.jpg |  Bin [31m0[m -> [32m76686[m bytes
+ ...JPG_jpg.rf.dbbd7748c15224f80475e666bdfb545f.jpg |  Bin [31m0[m -> [32m59499[m bytes
+ ...31-_jpg.rf.97cba6f5bab996562155e52e3a9e539b.jpg |  Bin [31m0[m -> [32m36532[m bytes
+ ...13-_jpg.rf.b96438bbd5bfd160bbaf6e040b491022.jpg |  Bin [31m0[m -> [32m57793[m bytes
+ ...25-_jpg.rf.95996192b0865987689b5e5b0533b0c2.jpg |  Bin [31m0[m -> [32m52017[m bytes
+ ...35-_jpg.rf.a225d7347b3eb53d8e4bb923efcb5907.jpg |  Bin [31m0[m -> [32m29378[m bytes
+ ...40-_jpg.rf.399848942c0643fbf3f66a71a30181ed.jpg |  Bin [31m0[m -> [32m26242[m bytes
+ ...JPG_jpg.rf.663a08f9e83db08ab6121bad4668a8e1.jpg |  Bin [31m0[m -> [32m63610[m bytes
+ ...JPG_jpg.rf.8089546097d4ac5ae777ca8f511e4201.jpg |  Bin [31m0[m -> [32m62249[m bytes
+ ...89-_jpg.rf.103d6a2764c3bef617bb9c3f7953d718.jpg |  Bin [31m0[m -> [32m26780[m bytes
+ ...98-_jpg.rf.0fc1210041ed0ebbcaee0c82d24c62f7.jpg |  Bin [31m0[m -> [32m63304[m bytes
+ ...07-_jpg.rf.40dd60915adf919dafb72f8f62ad5e33.jpg |  Bin [31m0[m -> [32m53395[m bytes
+ ...13-_jpg.rf.03b52952072f63198edb5ba69a1f55b9.jpg |  Bin [31m0[m -> [32m44327[m bytes
+ ...46-_jpg.rf.b5b296c2c6a4fe5da8752298dbc4b95a.jpg |  Bin [31m0[m -> [32m40594[m bytes
+ ...08-_jpg.rf.3473cd33e1e671cdd22622ed21460492.jpg |  Bin [31m0[m -> [32m71558[m bytes
+ ...53-_jpg.rf.1a8708442e5bdc399549c5a9db96d500.jpg |  Bin [31m0[m -> [32m26112[m bytes
+ ...46-_jpg.rf.263e1ba3f6a2c684aea0f79377a3d5e3.jpg |  Bin [31m0[m -> [32m41960[m bytes
+ ...80-_jpg.rf.405fb570086af63f7fac044dfb80e0e1.jpg |  Bin [31m0[m -> [32m76503[m bytes
+ ...81-_jpg.rf.7c6407b27fc4e1547ef2d2efcfcde8ee.jpg |  Bin [31m0[m -> [32m39611[m bytes
+ ...05-_jpg.rf.cec5040e385e9b1142e96510cafb37e6.jpg |  Bin [31m0[m -> [32m27075[m bytes
+ ...07-_jpg.rf.abc75f6255f24dc7193f947d1abd2c9f.jpg |  Bin [31m0[m -> [32m23401[m bytes
+ ...33-_jpg.rf.e2d5d2d59b467b19a8b7fb2c64ae1833.jpg |  Bin [31m0[m -> [32m29847[m bytes
+ ...94-_jpg.rf.22c8f86f8265a077893832ac073e6a6a.jpg |  Bin [31m0[m -> [32m25115[m bytes
+ ...42-_jpg.rf.1b61c0f3685c84b7f110a8cb25e5eaa6.jpg |  Bin [31m0[m -> [32m43960[m bytes
+ ...95-_jpg.rf.686050324437e308a93fb0a5ff4361ef.jpg |  Bin [31m0[m -> [32m33029[m bytes
+ ...64-_jpg.rf.a72a3ef1334628ef66fe9885bdeb47cf.jpg |  Bin [31m0[m -> [32m35946[m bytes
+ ...81-_jpg.rf.cad6ba6f44c5b22848e5c89b93d416e1.jpg |  Bin [31m0[m -> [32m24095[m bytes
+ ...82-_jpg.rf.83f212ab2d68e4f5d37ec755cf060213.jpg |  Bin [31m0[m -> [32m22203[m bytes
+ ...84-_jpg.rf.abbfbd48df6bf29e3143643d2727e9af.jpg |  Bin [31m0[m -> [32m32888[m bytes
+ ...88-_jpg.rf.264b1a1f7c3355d974a988118ef26cd8.jpg |  Bin [31m0[m -> [32m53331[m bytes
+ ...034_jpg.rf.ea5df309fc728742c22b5e1b0f2ccdbc.jpg |  Bin [31m0[m -> [32m37711[m bytes
+ ...044_jpg.rf.0cb6f435837323eac016a0e93e8d559b.jpg |  Bin [31m0[m -> [32m41109[m bytes
+ ...073_jpg.rf.adee51aa9fb3a77cc5b8783e7d10399c.jpg |  Bin [31m0[m -> [32m44068[m bytes
+ ...084_jpg.rf.ebed4b2e1930e373b635517979e1ba79.jpg |  Bin [31m0[m -> [32m43310[m bytes
+ ...005_jpg.rf.5d5cba7f4b4a311da92a4b5c242a7ce0.jpg |  Bin [31m0[m -> [32m42788[m bytes
+ ...053_jpg.rf.bfa82851925d1e855100d52383d744f2.jpg |  Bin [31m0[m -> [32m39867[m bytes
+ ...081_jpg.rf.1bf5907a8e91f282d76492715f1a903c.jpg |  Bin [31m0[m -> [32m43975[m bytes
+ ...000_jpg.rf.5ef73101cbb53dfcdc9054c6bb236e74.jpg |  Bin [31m0[m -> [32m39682[m bytes
+ ...025_jpg.rf.ec534587caabfe112fcc990c70d85e94.jpg |  Bin [31m0[m -> [32m39026[m bytes
+ ...079_jpg.rf.c18362d96c1d156e4b8d378e30b5f1e3.jpg |  Bin [31m0[m -> [32m38424[m bytes
+ ...026_jpg.rf.1c2a76282620c5bda9671108941b8858.jpg |  Bin [31m0[m -> [32m39364[m bytes
+ ...043_jpg.rf.a3393a30bc2882a63742e7f6f627857b.jpg |  Bin [31m0[m -> [32m39853[m bytes
+ ...071_jpg.rf.d9961e8c02835353c0d9b56435c25edc.jpg |  Bin [31m0[m -> [32m37741[m bytes
+ ...023_bmp.rf.f6428b794d5dd55b182e0fd4a68287f4.jpg |  Bin [31m0[m -> [32m42555[m bytes
+ ...017_jpg.rf.e7894e4aa3e6546beb1c59d0860f4dce.jpg |  Bin [31m0[m -> [32m40507[m bytes
+ ...062_bmp.rf.e2cb9634d272991179902a8396d3cc96.jpg |  Bin [31m0[m -> [32m30009[m bytes
+ ...062_jpg.rf.a55c62a5f12f9f7229f475201159fce9.jpg |  Bin [31m0[m -> [32m30065[m bytes
+ ...058_jpg.rf.e61bb71d9725c7afbb131dd647b58e90.jpg |  Bin [31m0[m -> [32m42879[m bytes
+ ...017_jpg.rf.fc94ba59c02264fc15f7e5f149bedc41.jpg |  Bin [31m0[m -> [32m41168[m bytes
+ ...023_bmp.rf.f651c790bf00d3bedd72c23aa5b3b4cf.jpg |  Bin [31m0[m -> [32m40257[m bytes
+ ...023_jpg.rf.7edd73d74898a62a0023795208627c1b.jpg |  Bin [31m0[m -> [32m40277[m bytes
+ ...043_jpg.rf.7a5495a441c84f79d3b36df4e6cb1df3.jpg |  Bin [31m0[m -> [32m39843[m bytes
+ ...013_bmp.rf.97d7ba2cb73e6dddeaf0b9575a975383.jpg |  Bin [31m0[m -> [32m34651[m bytes
+ ...065_jpg.rf.3b6198c10e00e131079c788cda39dc68.jpg |  Bin [31m0[m -> [32m39975[m bytes
+ ...005_jpg.rf.e01ec5b82d9550b6603d3351b1496ee6.jpg |  Bin [31m0[m -> [32m37223[m bytes
+ ...007_jpg.rf.6ebcbbe81480a9bf0bca14a6f7510bb2.jpg |  Bin [31m0[m -> [32m38373[m bytes
+ ...074_jpg.rf.9425d74617ef658827dd7c6ec2e18233.jpg |  Bin [31m0[m -> [32m36962[m bytes
+ .../13_jpg.rf.6889caaa311c3b05bfa5d4323bdb5a9e.jpg |  Bin [31m0[m -> [32m44737[m bytes
+ .../1_jpg.rf.2f9da79dec35336087b153d3ef80b03d.jpg  |  Bin [31m0[m -> [32m46661[m bytes
+ .../39_jpg.rf.8f26d3286e85e02efd0db83708347f3f.jpg |  Bin [31m0[m -> [32m37239[m bytes
+ .../5_jpg.rf.6d0a21f410cf517f472d77819810e0c7.jpg  |  Bin [31m0[m -> [32m40942[m bytes
+ ...076_jpg.rf.405a79c07a24ff847cdb75429f17d91c.jpg |  Bin [31m0[m -> [32m41978[m bytes
+ ...079_bmp.rf.a205715faefc7db543c71a8be1877ad4.jpg |  Bin [31m0[m -> [32m29001[m bytes
+ ...28_JPEG.rf.bb6a379bfba80337dc03908ca7ec0a68.jpg |  Bin [31m0[m -> [32m50013[m bytes
+ ...33_JPEG.rf.f174f6ff1e45e2e8acdae819746dec17.jpg |  Bin [31m0[m -> [32m51334[m bytes
+ ...35_JPEG.rf.19bc0a8fb2aa96f86660c72b500ed771.jpg |  Bin [31m0[m -> [32m43995[m bytes
+ ...43_JPEG.rf.f09410d71201a60e0823d290d824e9bc.jpg |  Bin [31m0[m -> [32m39939[m bytes
+ ...80_JPEG.rf.418b491e715487024b967cfc7d560d09.jpg |  Bin [31m0[m -> [32m42981[m bytes
+ ...94_JPEG.rf.d500b7c4d4b326a56a87676b3928cdb5.jpg |  Bin [31m0[m -> [32m56372[m bytes
+ ...98_JPEG.rf.4b3b75bcb8f5a024708fa135375834f9.jpg |  Bin [31m0[m -> [32m56531[m bytes
+ ...13_JPEG.rf.c897202dcf89a7e2c39f95ee1b2d0089.jpg |  Bin [31m0[m -> [32m49290[m bytes
+ ...18_JPEG.rf.c93ea5ba7b39e91852f12c5a1f85e5da.jpg |  Bin [31m0[m -> [32m56910[m bytes
+ ...25_JPEG.rf.59514bb28cd58ad449caf87667d63b27.jpg |  Bin [31m0[m -> [32m47497[m bytes
+ ...28_JPEG.rf.5b60ccf1e064fbe9d05abe7e4c555ffc.jpg |  Bin [31m0[m -> [32m52919[m bytes
+ ...36_JPEG.rf.e4985ef0b29ce52d3cba629c938a7eb3.jpg |  Bin [31m0[m -> [32m47876[m bytes
+ ...45_JPEG.rf.bd4fdace1967763ae374bde5dd802a97.jpg |  Bin [31m0[m -> [32m65387[m bytes
+ ...72_JPEG.rf.53cdbe9e7a9d2b844c9739a97b3c5a17.jpg |  Bin [31m0[m -> [32m28537[m bytes
+ ...79_JPEG.rf.4f797ca1c8f127cc6c6b2b9a2e3db0fd.jpg |  Bin [31m0[m -> [32m21809[m bytes
+ ...92_JPEG.rf.f44486bbbb281b9af1ea781e986fa611.jpg |  Bin [31m0[m -> [32m24256[m bytes
+ ...16_JPEG.rf.ee09ef4cbdf25882d06bdcb6a35a6ead.jpg |  Bin [31m0[m -> [32m23975[m bytes
+ ...37_JPEG.rf.53a27f88d6cb9cfc50743795d6edbb09.jpg |  Bin [31m0[m -> [32m38237[m bytes
+ ...39_JPEG.rf.7e913ca74097f4afab3d5f8f191878bf.jpg |  Bin [31m0[m -> [32m34293[m bytes
+ ...V-0_jpg.rf.ea06ce7d609e6cd89ec54da042f85dec.jpg |  Bin [31m0[m -> [32m40380[m bytes
+ ...V-0_jpg.rf.0de4d35d704229ac1b1f1ef5e9126bca.jpg |  Bin [31m0[m -> [32m42386[m bytes
+ ...76_JPEG.rf.07e807391d489d6eb4a92e61fb89a94d.jpg |  Bin [31m0[m -> [32m43013[m bytes
+ ...V-0_jpg.rf.546faf3e8b6ff31a980e7fc3888d0437.jpg |  Bin [31m0[m -> [32m34550[m bytes
+ ...94_JPEG.rf.116df832a1fa7e4cf65b5f8d3aded234.jpg |  Bin [31m0[m -> [32m48137[m bytes
+ ...12_JPEG.rf.099b8d8bc49f4ee68e7301f833d96f4d.jpg |  Bin [31m0[m -> [32m38763[m bytes
+ ...V-0_jpg.rf.fcfead2f03894151bf8eb549a9004df1.jpg |  Bin [31m0[m -> [32m28882[m bytes
+ ...V-0_jpg.rf.cb4e37b835533b365f23f89a30fb2a12.jpg |  Bin [31m0[m -> [32m36418[m bytes
+ ...V-0_jpg.rf.0735e237968195330b92fd189b53e088.jpg |  Bin [31m0[m -> [32m38202[m bytes
+ ...39_JPEG.rf.23c56579f95dda142645f670e7b89097.jpg |  Bin [31m0[m -> [32m36328[m bytes
+ ...06_JPEG.rf.df88845d4cff84f08035e14447fdb700.jpg |  Bin [31m0[m -> [32m39280[m bytes
+ ...V-0_jpg.rf.d4fced04b93bfdaaedcf187b758ee168.jpg |  Bin [31m0[m -> [32m42825[m bytes
+ ...487_jpg.rf.16ad1d1f5193d1ae3ba32dbbb6cdc03f.jpg |  Bin [31m0[m -> [32m96893[m bytes
+ ...489_jpg.rf.503b68b0aaebb691fcb987a6d666f87f.jpg |  Bin [31m0[m -> [32m78800[m bytes
+ ...492_jpg.rf.5a5d333aeaeeeb87d9961b85fb69c989.jpg |  Bin [31m0[m -> [32m95488[m bytes
+ ...515_jpg.rf.303699ec3ed10827dd48c12c20243617.jpg |  Bin [31m0[m -> [32m62961[m bytes
+ ...517_jpg.rf.5d3e6aeca3921c4614ded728f2e68c39.jpg |  Bin [31m0[m -> [32m44478[m bytes
+ ...524_jpg.rf.5d3073d9f29bd61763073b0d79c373d3.jpg |  Bin [31m0[m -> [32m58746[m bytes
+ ...557_jpg.rf.a5d0f5dd282280a74fc5ea1e08f6af0b.jpg |  Bin [31m0[m -> [32m85523[m bytes
+ ...47-_jpg.rf.df69b8bad90c651ce52140c3d655a7a6.jpg |  Bin [31m0[m -> [32m26533[m bytes
+ ...50-_jpg.rf.6362fed0822c39d5c670faaf12c142ee.jpg |  Bin [31m0[m -> [32m30824[m bytes
+ ...-3-_jpg.rf.92e3fb16fa2e2ae9e2db4703d9aab92c.jpg |  Bin [31m0[m -> [32m39294[m bytes
+ ...33-_jpg.rf.d35167d2d88f4bdfac2b7e78a75f05bb.jpg |  Bin [31m0[m -> [32m28724[m bytes
+ ...43-_jpg.rf.3527597d6a544de048db9e3dbde4a986.jpg |  Bin [31m0[m -> [32m29304[m bytes
+ ...52-_jpg.rf.76e58aede9b483897597e8892a0a496a.jpg |  Bin [31m0[m -> [32m17189[m bytes
+ ...58-_jpg.rf.6d973cbb46cfda8e56c27744d7ac5519.jpg |  Bin [31m0[m -> [32m36260[m bytes
+ ...74-_jpg.rf.8f522acdc730673c892310b0fa65b8d8.jpg |  Bin [31m0[m -> [32m60339[m bytes
+ ...87-_jpg.rf.aaab9102f44b269d572f16648ba49c9a.jpg |  Bin [31m0[m -> [32m39222[m bytes
+ ...15-_jpg.rf.780703d06b9f28e9e3979dfd1ce6a5fd.txt |    1 [32m+[m
+ ...17-_jpg.rf.d96a38205c47af272c9525e5fa28a653.txt |    1 [32m+[m
+ ...20-_jpg.rf.cf9ce07f815c88b977048692b39ccc86.txt |    1 [32m+[m
+ ...22-_jpg.rf.2015ef509ca5be40625c6e6580385aa7.txt |    2 [32m+[m
+ ...35-_jpg.rf.4bea15d552c08c9af725bf41e86a1bb4.txt |    1 [32m+[m
+ ...04-_jpg.rf.7ae03009c1172b6a03cf9588989cb61f.txt |    1 [32m+[m
+ ...40-_jpg.rf.ca8a6502ffa1791741de64ff236f0565.txt |    2 [32m+[m
+ ...68-_jpg.rf.8f252cb220e8e5035b998a9e9ba05abe.txt |    2 [32m+[m
+ ...75-_jpg.rf.dadb2aa89003afd96b60ba1f8d3897c1.txt |    1 [32m+[m
+ ...88-_jpg.rf.957121f0bf8c7186c8e41b18157bd0f8.txt |    1 [32m+[m
+ ...97-_jpg.rf.2481db8dcdda6df2a71447714671c836.txt |    1 [32m+[m
+ ...36-_jpg.rf.16d156499f11dde6d11d9ab603e354e2.txt |    1 [32m+[m
+ ...19-_jpg.rf.68eabb7a7d4a61fee00371bc1e13948c.txt |    2 [32m+[m
+ ...JPG_jpg.rf.ece621dc07e30da8a9e12f127b618407.txt |    1 [32m+[m
+ ...59-_jpg.rf.fa73d265fe2aa32809088f999b6c9d14.txt |    1 [32m+[m
+ ...93-_jpg.rf.d7c8bfd0fa16c246e4dc2ce0ffd3c600.txt |    4 [32m+[m
+ ...02-_jpg.rf.56c38287a86d7e013051544b95f11441.txt |    2 [32m+[m
+ ...JPG_jpg.rf.4c2c43dcd2d61135afa2adf2044e3365.txt |    2 [32m+[m
+ ...JPG_jpg.rf.2d17b56e7c6c41dd5a9e1265e2ea5ef2.txt |    2 [32m+[m
+ ...JPG_jpg.rf.dbbd7748c15224f80475e666bdfb545f.txt |    1 [32m+[m
+ ...31-_jpg.rf.97cba6f5bab996562155e52e3a9e539b.txt |    1 [32m+[m
+ ...13-_jpg.rf.b96438bbd5bfd160bbaf6e040b491022.txt |    1 [32m+[m
+ ...25-_jpg.rf.95996192b0865987689b5e5b0533b0c2.txt |    1 [32m+[m
+ ...35-_jpg.rf.a225d7347b3eb53d8e4bb923efcb5907.txt |    1 [32m+[m
+ ...40-_jpg.rf.399848942c0643fbf3f66a71a30181ed.txt |    2 [32m+[m
+ ...JPG_jpg.rf.663a08f9e83db08ab6121bad4668a8e1.txt |    5 [32m+[m
+ ...JPG_jpg.rf.8089546097d4ac5ae777ca8f511e4201.txt |    2 [32m+[m
+ ...89-_jpg.rf.103d6a2764c3bef617bb9c3f7953d718.txt |    1 [32m+[m
+ ...98-_jpg.rf.0fc1210041ed0ebbcaee0c82d24c62f7.txt |    1 [32m+[m
+ ...07-_jpg.rf.40dd60915adf919dafb72f8f62ad5e33.txt |    2 [32m+[m
+ ...13-_jpg.rf.03b52952072f63198edb5ba69a1f55b9.txt |    1 [32m+[m
+ ...46-_jpg.rf.b5b296c2c6a4fe5da8752298dbc4b95a.txt |    2 [32m+[m
+ ...08-_jpg.rf.3473cd33e1e671cdd22622ed21460492.txt |    1 [32m+[m
+ ...53-_jpg.rf.1a8708442e5bdc399549c5a9db96d500.txt |    2 [32m+[m
+ ...46-_jpg.rf.263e1ba3f6a2c684aea0f79377a3d5e3.txt |    1 [32m+[m
+ ...80-_jpg.rf.405fb570086af63f7fac044dfb80e0e1.txt |    1 [32m+[m
+ ...81-_jpg.rf.7c6407b27fc4e1547ef2d2efcfcde8ee.txt |    2 [32m+[m
+ ...05-_jpg.rf.cec5040e385e9b1142e96510cafb37e6.txt |    1 [32m+[m
+ ...07-_jpg.rf.abc75f6255f24dc7193f947d1abd2c9f.txt |    1 [32m+[m
+ ...33-_jpg.rf.e2d5d2d59b467b19a8b7fb2c64ae1833.txt |    2 [32m+[m
+ ...94-_jpg.rf.22c8f86f8265a077893832ac073e6a6a.txt |    3 [32m+[m
+ ...42-_jpg.rf.1b61c0f3685c84b7f110a8cb25e5eaa6.txt |    1 [32m+[m
+ ...95-_jpg.rf.686050324437e308a93fb0a5ff4361ef.txt |    2 [32m+[m
+ ...64-_jpg.rf.a72a3ef1334628ef66fe9885bdeb47cf.txt |    1 [32m+[m
+ ...81-_jpg.rf.cad6ba6f44c5b22848e5c89b93d416e1.txt |    1 [32m+[m
+ ...82-_jpg.rf.83f212ab2d68e4f5d37ec755cf060213.txt |    1 [32m+[m
+ ...84-_jpg.rf.abbfbd48df6bf29e3143643d2727e9af.txt |    3 [32m+[m
+ ...88-_jpg.rf.264b1a1f7c3355d974a988118ef26cd8.txt |    1 [32m+[m
+ ...034_jpg.rf.ea5df309fc728742c22b5e1b0f2ccdbc.txt |    1 [32m+[m
+ ...044_jpg.rf.0cb6f435837323eac016a0e93e8d559b.txt |    2 [32m+[m
+ ...073_jpg.rf.adee51aa9fb3a77cc5b8783e7d10399c.txt |    3 [32m+[m
+ ...084_jpg.rf.ebed4b2e1930e373b635517979e1ba79.txt |    1 [32m+[m
+ ...005_jpg.rf.5d5cba7f4b4a311da92a4b5c242a7ce0.txt |    2 [32m+[m
+ ...053_jpg.rf.bfa82851925d1e855100d52383d744f2.txt |    1 [32m+[m
+ ...081_jpg.rf.1bf5907a8e91f282d76492715f1a903c.txt |    2 [32m+[m
+ ...000_jpg.rf.5ef73101cbb53dfcdc9054c6bb236e74.txt |    2 [32m+[m
+ ...025_jpg.rf.ec534587caabfe112fcc990c70d85e94.txt |    1 [32m+[m
+ ...079_jpg.rf.c18362d96c1d156e4b8d378e30b5f1e3.txt |    2 [32m+[m
+ ...026_jpg.rf.1c2a76282620c5bda9671108941b8858.txt |    2 [32m+[m
+ ...043_jpg.rf.a3393a30bc2882a63742e7f6f627857b.txt |    1 [32m+[m
+ ...071_jpg.rf.d9961e8c02835353c0d9b56435c25edc.txt |    3 [32m+[m
+ ...023_bmp.rf.f6428b794d5dd55b182e0fd4a68287f4.txt |    2 [32m+[m
+ ...017_jpg.rf.e7894e4aa3e6546beb1c59d0860f4dce.txt |    2 [32m+[m
+ ...062_bmp.rf.e2cb9634d272991179902a8396d3cc96.txt |    1 [32m+[m
+ ...062_jpg.rf.a55c62a5f12f9f7229f475201159fce9.txt |    1 [32m+[m
+ ...058_jpg.rf.e61bb71d9725c7afbb131dd647b58e90.txt |    2 [32m+[m
+ ...017_jpg.rf.fc94ba59c02264fc15f7e5f149bedc41.txt |    1 [32m+[m
+ ...023_bmp.rf.f651c790bf00d3bedd72c23aa5b3b4cf.txt |    1 [32m+[m
+ ...023_jpg.rf.7edd73d74898a62a0023795208627c1b.txt |    1 [32m+[m
+ ...043_jpg.rf.7a5495a441c84f79d3b36df4e6cb1df3.txt |    1 [32m+[m
+ ...013_bmp.rf.97d7ba2cb73e6dddeaf0b9575a975383.txt |    1 [32m+[m
+ ...065_jpg.rf.3b6198c10e00e131079c788cda39dc68.txt |    2 [32m+[m
+ ...005_jpg.rf.e01ec5b82d9550b6603d3351b1496ee6.txt |    3 [32m+[m
+ ...007_jpg.rf.6ebcbbe81480a9bf0bca14a6f7510bb2.txt |    1 [32m+[m
+ ...074_jpg.rf.9425d74617ef658827dd7c6ec2e18233.txt |    2 [32m+[m
+ .../13_jpg.rf.6889caaa311c3b05bfa5d4323bdb5a9e.txt |    1 [32m+[m
+ .../1_jpg.rf.2f9da79dec35336087b153d3ef80b03d.txt  |    2 [32m+[m
+ .../39_jpg.rf.8f26d3286e85e02efd0db83708347f3f.txt |    1 [32m+[m
+ .../5_jpg.rf.6d0a21f410cf517f472d77819810e0c7.txt  |    1 [32m+[m
+ ...076_jpg.rf.405a79c07a24ff847cdb75429f17d91c.txt |    2 [32m+[m
+ ...079_bmp.rf.a205715faefc7db543c71a8be1877ad4.txt |    1 [32m+[m
+ ...28_JPEG.rf.bb6a379bfba80337dc03908ca7ec0a68.txt |   12 [32m+[m
+ ...33_JPEG.rf.f174f6ff1e45e2e8acdae819746dec17.txt |   12 [32m+[m
+ ...35_JPEG.rf.19bc0a8fb2aa96f86660c72b500ed771.txt |   10 [32m+[m
+ ...43_JPEG.rf.f09410d71201a60e0823d290d824e9bc.txt |    4 [32m+[m
+ ...80_JPEG.rf.418b491e715487024b967cfc7d560d09.txt |    3 [32m+[m
+ ...94_JPEG.rf.d500b7c4d4b326a56a87676b3928cdb5.txt |    4 [32m+[m
+ ...98_JPEG.rf.4b3b75bcb8f5a024708fa135375834f9.txt |    2 [32m+[m
+ ...13_JPEG.rf.c897202dcf89a7e2c39f95ee1b2d0089.txt |    3 [32m+[m
+ ...18_JPEG.rf.c93ea5ba7b39e91852f12c5a1f85e5da.txt |    3 [32m+[m
+ ...25_JPEG.rf.59514bb28cd58ad449caf87667d63b27.txt |    2 [32m+[m
+ ...28_JPEG.rf.5b60ccf1e064fbe9d05abe7e4c555ffc.txt |    2 [32m+[m
+ ...36_JPEG.rf.e4985ef0b29ce52d3cba629c938a7eb3.txt |    4 [32m+[m
+ ...45_JPEG.rf.bd4fdace1967763ae374bde5dd802a97.txt |    2 [32m+[m
+ ...72_JPEG.rf.53cdbe9e7a9d2b844c9739a97b3c5a17.txt |    1 [32m+[m
+ ...79_JPEG.rf.4f797ca1c8f127cc6c6b2b9a2e3db0fd.txt |    1 [32m+[m
+ ...92_JPEG.rf.f44486bbbb281b9af1ea781e986fa611.txt |    1 [32m+[m
+ ...16_JPEG.rf.ee09ef4cbdf25882d06bdcb6a35a6ead.txt |    1 [32m+[m
+ ...37_JPEG.rf.53a27f88d6cb9cfc50743795d6edbb09.txt |    2 [32m+[m
+ ...39_JPEG.rf.7e913ca74097f4afab3d5f8f191878bf.txt |    2 [32m+[m
+ ...V-0_jpg.rf.ea06ce7d609e6cd89ec54da042f85dec.txt |    2 [32m+[m
+ ...V-0_jpg.rf.0de4d35d704229ac1b1f1ef5e9126bca.txt |    3 [32m+[m
+ ...76_JPEG.rf.07e807391d489d6eb4a92e61fb89a94d.txt |    3 [32m+[m
+ ...V-0_jpg.rf.546faf3e8b6ff31a980e7fc3888d0437.txt |   11 [32m+[m
+ ...94_JPEG.rf.116df832a1fa7e4cf65b5f8d3aded234.txt |    1 [32m+[m
+ ...12_JPEG.rf.099b8d8bc49f4ee68e7301f833d96f4d.txt |    5 [32m+[m
+ ...V-0_jpg.rf.fcfead2f03894151bf8eb549a9004df1.txt |    4 [32m+[m
+ ...V-0_jpg.rf.cb4e37b835533b365f23f89a30fb2a12.txt |    3 [32m+[m
+ ...V-0_jpg.rf.0735e237968195330b92fd189b53e088.txt |    3 [32m+[m
+ ...39_JPEG.rf.23c56579f95dda142645f670e7b89097.txt |    4 [32m+[m
+ ...06_JPEG.rf.df88845d4cff84f08035e14447fdb700.txt |    7 [32m+[m
+ ...V-0_jpg.rf.d4fced04b93bfdaaedcf187b758ee168.txt |    3 [32m+[m
+ ...487_jpg.rf.16ad1d1f5193d1ae3ba32dbbb6cdc03f.txt |    1 [32m+[m
+ ...489_jpg.rf.503b68b0aaebb691fcb987a6d666f87f.txt |    2 [32m+[m
+ ...492_jpg.rf.5a5d333aeaeeeb87d9961b85fb69c989.txt |    2 [32m+[m
+ ...515_jpg.rf.303699ec3ed10827dd48c12c20243617.txt |    4 [32m+[m
+ ...517_jpg.rf.5d3e6aeca3921c4614ded728f2e68c39.txt |    5 [32m+[m
+ ...524_jpg.rf.5d3073d9f29bd61763073b0d79c373d3.txt |    1 [32m+[m
+ ...557_jpg.rf.a5d0f5dd282280a74fc5ea1e08f6af0b.txt |    1 [32m+[m
+ ...47-_jpg.rf.df69b8bad90c651ce52140c3d655a7a6.txt |    1 [32m+[m
+ ...50-_jpg.rf.6362fed0822c39d5c670faaf12c142ee.txt |    1 [32m+[m
+ ...-3-_jpg.rf.92e3fb16fa2e2ae9e2db4703d9aab92c.txt |    1 [32m+[m
+ ...33-_jpg.rf.d35167d2d88f4bdfac2b7e78a75f05bb.txt |    1 [32m+[m
+ ...43-_jpg.rf.3527597d6a544de048db9e3dbde4a986.txt |    1 [32m+[m
+ ...52-_jpg.rf.76e58aede9b483897597e8892a0a496a.txt |    1 [32m+[m
+ ...58-_jpg.rf.6d973cbb46cfda8e56c27744d7ac5519.txt |    3 [32m+[m
+ ...74-_jpg.rf.8f522acdc730673c892310b0fa65b8d8.txt |    1 [32m+[m
+ ...87-_jpg.rf.aaab9102f44b269d572f16648ba49c9a.txt |    1 [32m+[m
+ ...33-_jpg.rf.5a085b7397d5fff88e28f0839304f7a6.jpg |  Bin [31m0[m -> [32m41135[m bytes
+ ...33-_jpg.rf.e118284a1197b5c51e5ad73ad81af7b0.jpg |  Bin [31m0[m -> [32m40482[m bytes
+ ...33-_jpg.rf.ea66658ab57820497cd2613b4b81d2e2.jpg |  Bin [31m0[m -> [32m46848[m bytes
+ ...52-_jpg.rf.699297d9427a52fe8db17b340407f33a.jpg |  Bin [31m0[m -> [32m94224[m bytes
+ ...52-_jpg.rf.bcf70cdfe463fd2fc831b8ad5bf12d64.jpg |  Bin [31m0[m -> [32m116322[m bytes
+ ...52-_jpg.rf.f63f3385dcf23deb626d3109df1f52e5.jpg |  Bin [31m0[m -> [32m96193[m bytes
+ ...13-_jpg.rf.0bc30ed0e5b81c91541ff2f690451c0f.jpg |  Bin [31m0[m -> [32m59518[m bytes
+ ...13-_jpg.rf.c6b3f9be383fd916ff85c1cac223b7ce.jpg |  Bin [31m0[m -> [32m53887[m bytes
+ ...13-_jpg.rf.cf4a060220f873de81f278945f648ea5.jpg |  Bin [31m0[m -> [32m51204[m bytes
+ ...14-_jpg.rf.7942cc4b28e56de5641a1746876f0d56.jpg |  Bin [31m0[m -> [32m53053[m bytes
+ ...14-_jpg.rf.a308d884d83e5e42792a4a1ec3dff003.jpg |  Bin [31m0[m -> [32m55059[m bytes
+ ...14-_jpg.rf.ebd1c8a7672d478750c439a6afaa5af4.jpg |  Bin [31m0[m -> [32m59166[m bytes
+ ...70-_jpg.rf.3fbc217884e6310dac15aac55926ed60.jpg |  Bin [31m0[m -> [32m23096[m bytes
+ ...70-_jpg.rf.e189d622549eab5c9ac4de25e8e70a0f.jpg |  Bin [31m0[m -> [32m21973[m bytes
+ ...70-_jpg.rf.e8f61e013d494acadf5d748e22dc0273.jpg |  Bin [31m0[m -> [32m23089[m bytes
+ ...20-_jpg.rf.2a03a5bafd8bfab9b2471a94a34f0b4a.jpg |  Bin [31m0[m -> [32m60996[m bytes
+ ...20-_jpg.rf.5c8ce4d7da2a86b8d1f42249c14fe5a7.jpg |  Bin [31m0[m -> [32m72657[m bytes
+ ...20-_jpg.rf.f35839271f6e860d2ba02ba44b6210ee.jpg |  Bin [31m0[m -> [32m61163[m bytes
+ ...96-_jpg.rf.5e6b8cd634a936ba0039be52dfbba112.jpg |  Bin [31m0[m -> [32m29604[m bytes
+ ...96-_jpg.rf.76ab8584a83e8eaa33a3950573fad2c9.jpg |  Bin [31m0[m -> [32m28078[m bytes
+ ...96-_jpg.rf.a22dc155474d41e93762289e9d8d92a0.jpg |  Bin [31m0[m -> [32m28369[m bytes
+ ...14-_jpg.rf.2e7f67066056292a07374b2e617f506f.jpg |  Bin [31m0[m -> [32m36488[m bytes
+ ...14-_jpg.rf.8d0ef3fabc3775355ffde45fe9a4035d.jpg |  Bin [31m0[m -> [32m35106[m bytes
+ ...14-_jpg.rf.abd0288b749338ee7f93601a6949e658.jpg |  Bin [31m0[m -> [32m39130[m bytes
+ ...38-_jpg.rf.098c2e65d80a6b07c6770eba6077ef68.jpg |  Bin [31m0[m -> [32m28349[m bytes
+ ...38-_jpg.rf.2c774d80b7ff00f571b118604c4b4c02.jpg |  Bin [31m0[m -> [32m29111[m bytes
+ ...38-_jpg.rf.557da3688a0a5f9a772daff4aa03541d.jpg |  Bin [31m0[m -> [32m30329[m bytes
+ ...90-_jpg.rf.774303703d06372ed010e891083e6971.jpg |  Bin [31m0[m -> [32m69029[m bytes
+ ...90-_jpg.rf.afe27003ef292829a08d3c278ce35d3f.jpg |  Bin [31m0[m -> [32m81856[m bytes
+ ...90-_jpg.rf.ff2144f8448f2ff2d6347ada96807766.jpg |  Bin [31m0[m -> [32m69543[m bytes
+ ...82-_jpg.rf.584a1293c009f956e8b21b5c981700d2.jpg |  Bin [31m0[m -> [32m68980[m bytes
+ ...82-_jpg.rf.70e5c4d8666c2ca41e92a9378fddeea4.jpg |  Bin [31m0[m -> [32m57690[m bytes
+ ...82-_jpg.rf.c27f09acd7b00946dcad0fc4a1971abb.jpg |  Bin [31m0[m -> [32m57203[m bytes
+ ...58-_jpg.rf.295bf75f10f59696ca5e1bd6f6bca27d.jpg |  Bin [31m0[m -> [32m31155[m bytes
+ ...58-_jpg.rf.6b891f5e2e5e56a0f0516447de1f064b.jpg |  Bin [31m0[m -> [32m31320[m bytes
+ ...58-_jpg.rf.b0fa202f5641d0354842466856630c2a.jpg |  Bin [31m0[m -> [32m33485[m bytes
+ ...71-_jpg.rf.327fac42349407f48757871a8df34a19.jpg |  Bin [31m0[m -> [32m39043[m bytes
+ ...71-_jpg.rf.bab3212edf0e4e5564d4d3f9b0780d18.jpg |  Bin [31m0[m -> [32m38470[m bytes
+ ...71-_jpg.rf.cfde3d83bad72e7cadebcad5f58d55e6.jpg |  Bin [31m0[m -> [32m44168[m bytes
+ ...83-_jpg.rf.0432020e7f363795cd2c558e8b9a06cd.jpg |  Bin [31m0[m -> [32m40559[m bytes
+ ...83-_jpg.rf.3c15d3fcd5267fe62525a9b12aff94d7.jpg |  Bin [31m0[m -> [32m41182[m bytes
+ ...83-_jpg.rf.66f2873855cfe17a311bc7d38b9a1cb0.jpg |  Bin [31m0[m -> [32m47698[m bytes
+ ...76-_jpg.rf.3d895200947d75a8ecafb1edb4d37835.jpg |  Bin [31m0[m -> [32m45542[m bytes
+ ...76-_jpg.rf.72fb6217c0ca37dcc2fe8f087de47f09.jpg |  Bin [31m0[m -> [32m50957[m bytes
+ ...76-_jpg.rf.85ba9fb0481febfa319ed447bfb5acef.jpg |  Bin [31m0[m -> [32m46106[m bytes
+ ...84-_jpg.rf.89d558b1a73f5284c66c383a09d71f5a.jpg |  Bin [31m0[m -> [32m41371[m bytes
+ ...84-_jpg.rf.954cbcb6a5729b1e23a66bf622a3362f.jpg |  Bin [31m0[m -> [32m44428[m bytes
+ ...84-_jpg.rf.dd287b23ee8999ed966427e485622e21.jpg |  Bin [31m0[m -> [32m39048[m bytes
+ ...89-_jpg.rf.45017a60d90414cb978dc3d69749b60e.jpg |  Bin [31m0[m -> [32m24214[m bytes
+ ...89-_jpg.rf.7e9146362e935a0a79c9e648f7e94954.jpg |  Bin [31m0[m -> [32m24260[m bytes
+ ...89-_jpg.rf.d9bb12bf59dc44e045edc43fd011f540.jpg |  Bin [31m0[m -> [32m25676[m bytes
+ ...95-_jpg.rf.9eac2b6b6c6eff62ecc7b4e156fde25d.jpg |  Bin [31m0[m -> [32m31340[m bytes
+ ...95-_jpg.rf.c1fe2cc79922896955e52c8b32a24437.jpg |  Bin [31m0[m -> [32m32095[m bytes
+ ...95-_jpg.rf.fd68a1bec542d64df202b3834823a5a9.jpg |  Bin [31m0[m -> [32m31065[m bytes
+ ...076_jpg.rf.2a744da84bd16a5f4e38d870bcc2f1d6.jpg |  Bin [31m0[m -> [32m37417[m bytes
+ ...076_jpg.rf.85530093098f10c125e31daea1c5d0ee.jpg |  Bin [31m0[m -> [32m39312[m bytes
+ ...076_jpg.rf.d5a49132d57b16dd4f03b66e84036622.jpg |  Bin [31m0[m -> [32m37471[m bytes
+ ...075_bmp.rf.0389ff61c9bdb7626a2490034c478226.jpg |  Bin [31m0[m -> [32m37638[m bytes
+ ...075_bmp.rf.b0630e42e108a491ca48197d66d53cb8.jpg |  Bin [31m0[m -> [32m38910[m bytes
+ ...075_bmp.rf.d31c3b3626124dee2adeded710498b8e.jpg |  Bin [31m0[m -> [32m38084[m bytes
+ ...029_jpg.rf.b2f7b2774178e2994a40f0d40f5cf550.jpg |  Bin [31m0[m -> [32m43198[m bytes
+ ...029_jpg.rf.bf2f45fb007def02241ea98381b28db4.jpg |  Bin [31m0[m -> [32m44490[m bytes
+ ...029_jpg.rf.fd06fc75a5256a06b84d0eb216906adb.jpg |  Bin [31m0[m -> [32m42693[m bytes
+ ...004_bmp.rf.0c713f081871f41c490d9975daf69eda.jpg |  Bin [31m0[m -> [32m37559[m bytes
+ ...004_bmp.rf.396d9692b7d6aca93d78120c75c7e9e3.jpg |  Bin [31m0[m -> [32m37212[m bytes
+ ...004_bmp.rf.9923c35b34b7dc220951805bf466d0b8.jpg |  Bin [31m0[m -> [32m38571[m bytes
+ ...056_jpg.rf.4d18341c3a000126743cabc8afd65273.jpg |  Bin [31m0[m -> [32m46372[m bytes
+ ...056_jpg.rf.dc4c9b6772dd7c2e5c8f130e820a4af9.jpg |  Bin [31m0[m -> [32m44241[m bytes
+ ...056_jpg.rf.e22c1a8d411f9289fec93fee4dec9f38.jpg |  Bin [31m0[m -> [32m44389[m bytes
+ ...015_bmp.rf.06c77e75402679892ff2df904b2c12d1.jpg |  Bin [31m0[m -> [32m44052[m bytes
+ ...015_bmp.rf.17a91e49e8700d108040b5eb98a8997f.jpg |  Bin [31m0[m -> [32m42213[m bytes
+ ...015_bmp.rf.695f5855986e57d2c0f26040e2eff4e9.jpg |  Bin [31m0[m -> [32m42346[m bytes
+ ...054_bmp.rf.14ba2159c7aae2684b47286afa97a762.jpg |  Bin [31m0[m -> [32m34939[m bytes
+ ...054_bmp.rf.9e53a67c5daf45923e223a7388103e02.jpg |  Bin [31m0[m -> [32m36052[m bytes
+ ...054_bmp.rf.e24ab64f77fe39b51835624dbce5fbe9.jpg |  Bin [31m0[m -> [32m35836[m bytes
+ ...055_jpg.rf.109fa200cd84e0e8d0903b0803faed5c.jpg |  Bin [31m0[m -> [32m37255[m bytes
+ ...055_jpg.rf.1225e9bdad8cc3391041ef7b544fa14a.jpg |  Bin [31m0[m -> [32m38645[m bytes
+ ...055_jpg.rf.fc5ebbac596945fb007f97580a8cca89.jpg |  Bin [31m0[m -> [32m37631[m bytes
+ ...063_jpg.rf.250b39b68ecc15d4a37a077b259dc9b6.jpg |  Bin [31m0[m -> [32m38772[m bytes
+ ...063_jpg.rf.7001eaaaea9cfe254d94711b983dae6e.jpg |  Bin [31m0[m -> [32m40086[m bytes
+ ...063_jpg.rf.e0b626e2f5ad010975b291351ebdc2e3.jpg |  Bin [31m0[m -> [32m40307[m bytes
+ ...072_jpg.rf.01a6efd26dd69228d3cc11a74129108f.jpg |  Bin [31m0[m -> [32m39359[m bytes
+ ...072_jpg.rf.18c2fad5cd2af6e306197c4dceada828.jpg |  Bin [31m0[m -> [32m40207[m bytes
+ ...072_jpg.rf.a323907a0ba09cbe54f4c2d443f5ff4c.jpg |  Bin [31m0[m -> [32m38539[m bytes
+ ...080_jpg.rf.2f0ddd2868ef2ad9534cc9ed01193be8.jpg |  Bin [31m0[m -> [32m40047[m bytes
+ ...080_jpg.rf.606b94301609f4002ff941d277bb8c13.jpg |  Bin [31m0[m -> [32m41172[m bytes
+ ...080_jpg.rf.97fb0d59fe1fe99504ab8964bd36b28d.jpg |  Bin [31m0[m -> [32m39373[m bytes
+ .../17_jpg.rf.252a3c5b22613e53142c0ce3f0197a56.jpg |  Bin [31m0[m -> [32m39554[m bytes
+ .../17_jpg.rf.aae3c606e95b21170108e7ac07e3ac7d.jpg |  Bin [31m0[m -> [32m42675[m bytes
+ .../17_jpg.rf.c607055810b792b36702cf2023595c48.jpg |  Bin [31m0[m -> [32m38557[m bytes
+ ...40_JPEG.rf.2f24527d88454d8d34fcb6c904f6bede.jpg |  Bin [31m0[m -> [32m44141[m bytes
+ ...40_JPEG.rf.646ca2c9a0b63785fc7ee0bf284e4beb.jpg |  Bin [31m0[m -> [32m49814[m bytes
+ ...40_JPEG.rf.eb241d43e83c01e91ec951d0b284f1a0.jpg |  Bin [31m0[m -> [32m49814[m bytes
+ ...73_JPEG.rf.06d3f4f168ac25a8191b17f806608d71.jpg |  Bin [31m0[m -> [32m37401[m bytes
+ ...73_JPEG.rf.1df4766901ed14b0cd1baeb7e035be70.jpg |  Bin [31m0[m -> [32m35109[m bytes
+ ...73_JPEG.rf.b59aebfb3fb0cf0c4c4e0b1cad117439.jpg |  Bin [31m0[m -> [32m34723[m bytes
+ ...76_JPEG.rf.0d2ca711064437a19f0120caaaebdaba.jpg |  Bin [31m0[m -> [32m61406[m bytes
+ ...76_JPEG.rf.1d52b394afb27e38a8dedf27273231d3.jpg |  Bin [31m0[m -> [32m52681[m bytes
+ ...76_JPEG.rf.54a4bbd06c43be71ca7b27d87263de02.jpg |  Bin [31m0[m -> [32m53075[m bytes
+ ...14_JPEG.rf.225f501b79256efc4bf4e16859b40a15.jpg |  Bin [31m0[m -> [32m46234[m bytes
+ ...14_JPEG.rf.529321b4dd66a4bee53a9ea70fd824e8.jpg |  Bin [31m0[m -> [32m42594[m bytes
+ ...14_JPEG.rf.e6af59c8d6f6428dd2ee8dfb0a386399.jpg |  Bin [31m0[m -> [32m42191[m bytes
+ ...25_JPEG.rf.2ec5c2cd1202f6beead36f18ae2bc487.jpg |  Bin [31m0[m -> [32m34231[m bytes
+ ...25_JPEG.rf.5ed6729884a8405e8942cd0507bac401.jpg |  Bin [31m0[m -> [32m36784[m bytes
+ ...25_JPEG.rf.7eb7891aa96626bac987195033a6a5c4.jpg |  Bin [31m0[m -> [32m34826[m bytes
+ ...27_JPEG.rf.ab960448d1bc333dc79e9eb91451aa72.jpg |  Bin [31m0[m -> [32m39757[m bytes
+ ...27_JPEG.rf.ea294974b71a5f83cefff28119478a5f.jpg |  Bin [31m0[m -> [32m37036[m bytes
+ ...27_JPEG.rf.fc62c4fd5f3004b283a7633d92cdef35.jpg |  Bin [31m0[m -> [32m37343[m bytes
+ ...49_JPEG.rf.04b7be4b4c1c4030a123b12db6cf4b55.jpg |  Bin [31m0[m -> [32m26079[m bytes
+ ...49_JPEG.rf.14f1a74278d37e34abfb3aaa8bca4f7c.jpg |  Bin [31m0[m -> [32m25852[m bytes
+ ...49_JPEG.rf.fa42cc8151fedc8c9d0dad766a4c07ed.jpg |  Bin [31m0[m -> [32m26087[m bytes
+ ...51_JPEG.rf.0b597cf9f7d42b3715c9ce1d2288e06f.jpg |  Bin [31m0[m -> [32m26519[m bytes
+ ...51_JPEG.rf.2d44680245d0a822c03a77e8c02a83b4.jpg |  Bin [31m0[m -> [32m26732[m bytes
+ ...51_JPEG.rf.dd252e92699d5d37b5bf5c5d4414c64e.jpg |  Bin [31m0[m -> [32m27108[m bytes
+ ...14_JPEG.rf.34eb529d10e3c6548e594e18453bbc91.jpg |  Bin [31m0[m -> [32m40561[m bytes
+ ...14_JPEG.rf.6a06e97f1b3bf58e91267eb87a4f3862.jpg |  Bin [31m0[m -> [32m37246[m bytes
+ ...14_JPEG.rf.ed45b10ab0fbe32d11741f5b02bc5f66.jpg |  Bin [31m0[m -> [32m37762[m bytes
+ ...495_jpg.rf.01adb1a00ca7ad20fa6d2c0c2433efc2.jpg |  Bin [31m0[m -> [32m74544[m bytes
+ ...495_jpg.rf.6d3fa71db1b274cd1d053bd7478a8c66.jpg |  Bin [31m0[m -> [32m81254[m bytes
+ ...495_jpg.rf.7c078b6c4cf1c42037562f1857a0ef66.jpg |  Bin [31m0[m -> [32m90959[m bytes
+ ...521_jpg.rf.2c281018c7a99190cd1ddee5b9464d20.jpg |  Bin [31m0[m -> [32m72105[m bytes
+ ...521_jpg.rf.561c0200f29ef0a63ae60364bc53600d.jpg |  Bin [31m0[m -> [32m71392[m bytes
+ ...521_jpg.rf.648caf1cc68278277ec16c66535146a8.jpg |  Bin [31m0[m -> [32m86811[m bytes
+ ...547_jpg.rf.5131be8c47fc3a045f0d3e817735a693.jpg |  Bin [31m0[m -> [32m47823[m bytes
+ ...547_jpg.rf.d6ce8870f492c45919e1608684cb0546.jpg |  Bin [31m0[m -> [32m55177[m bytes
+ ...547_jpg.rf.e078cf7dc869065b86346f0d761dd0e7.jpg |  Bin [31m0[m -> [32m48343[m bytes
+ ...25-_jpg.rf.6d98a788af99773154cff9301ff50472.jpg |  Bin [31m0[m -> [32m32126[m bytes
+ ...25-_jpg.rf.8988d909c68f6e9296a2597d5839d782.jpg |  Bin [31m0[m -> [32m32293[m bytes
+ ...25-_jpg.rf.e84d8770ed7b2a110e8de972c6996483.jpg |  Bin [31m0[m -> [32m31842[m bytes
+ ...28-_jpg.rf.4e11fd22378bf25489b31f5de0bac574.jpg |  Bin [31m0[m -> [32m26905[m bytes
+ ...28-_jpg.rf.5b7c3f59dd99c378db17effac79926c9.jpg |  Bin [31m0[m -> [32m27658[m bytes
+ ...28-_jpg.rf.c5de8598d534b3f1774b672e98a4e50e.jpg |  Bin [31m0[m -> [32m26845[m bytes
+ ...33-_jpg.rf.5a085b7397d5fff88e28f0839304f7a6.txt |    1 [32m+[m
+ ...33-_jpg.rf.e118284a1197b5c51e5ad73ad81af7b0.txt |    1 [32m+[m
+ ...33-_jpg.rf.ea66658ab57820497cd2613b4b81d2e2.txt |    1 [32m+[m
+ ...52-_jpg.rf.699297d9427a52fe8db17b340407f33a.txt |    1 [32m+[m
+ ...52-_jpg.rf.bcf70cdfe463fd2fc831b8ad5bf12d64.txt |    1 [32m+[m
+ ...52-_jpg.rf.f63f3385dcf23deb626d3109df1f52e5.txt |    1 [32m+[m
+ ...13-_jpg.rf.0bc30ed0e5b81c91541ff2f690451c0f.txt |    1 [32m+[m
+ ...13-_jpg.rf.c6b3f9be383fd916ff85c1cac223b7ce.txt |    1 [32m+[m
+ ...13-_jpg.rf.cf4a060220f873de81f278945f648ea5.txt |    1 [32m+[m
+ ...14-_jpg.rf.7942cc4b28e56de5641a1746876f0d56.txt |    1 [32m+[m
+ ...14-_jpg.rf.a308d884d83e5e42792a4a1ec3dff003.txt |    1 [32m+[m
+ ...14-_jpg.rf.ebd1c8a7672d478750c439a6afaa5af4.txt |    1 [32m+[m
+ ...70-_jpg.rf.3fbc217884e6310dac15aac55926ed60.txt |    2 [32m+[m
+ ...70-_jpg.rf.e189d622549eab5c9ac4de25e8e70a0f.txt |    2 [32m+[m
+ ...70-_jpg.rf.e8f61e013d494acadf5d748e22dc0273.txt |    2 [32m+[m
+ ...20-_jpg.rf.2a03a5bafd8bfab9b2471a94a34f0b4a.txt |    1 [32m+[m
+ ...20-_jpg.rf.5c8ce4d7da2a86b8d1f42249c14fe5a7.txt |    1 [32m+[m
+ ...20-_jpg.rf.f35839271f6e860d2ba02ba44b6210ee.txt |    1 [32m+[m
+ ...96-_jpg.rf.5e6b8cd634a936ba0039be52dfbba112.txt |    1 [32m+[m
+ ...96-_jpg.rf.76ab8584a83e8eaa33a3950573fad2c9.txt |    1 [32m+[m
+ ...96-_jpg.rf.a22dc155474d41e93762289e9d8d92a0.txt |    1 [32m+[m
+ ...14-_jpg.rf.2e7f67066056292a07374b2e617f506f.txt |    1 [32m+[m
+ ...14-_jpg.rf.8d0ef3fabc3775355ffde45fe9a4035d.txt |    1 [32m+[m
+ ...14-_jpg.rf.abd0288b749338ee7f93601a6949e658.txt |    1 [32m+[m
+ ...38-_jpg.rf.098c2e65d80a6b07c6770eba6077ef68.txt |    1 [32m+[m
+ ...38-_jpg.rf.2c774d80b7ff00f571b118604c4b4c02.txt |    1 [32m+[m
+ ...38-_jpg.rf.557da3688a0a5f9a772daff4aa03541d.txt |    1 [32m+[m
+ ...90-_jpg.rf.774303703d06372ed010e891083e6971.txt |    1 [32m+[m
+ ...90-_jpg.rf.afe27003ef292829a08d3c278ce35d3f.txt |    1 [32m+[m
+ ...90-_jpg.rf.ff2144f8448f2ff2d6347ada96807766.txt |    1 [32m+[m
+ ...82-_jpg.rf.584a1293c009f956e8b21b5c981700d2.txt |    1 [32m+[m
+ ...82-_jpg.rf.70e5c4d8666c2ca41e92a9378fddeea4.txt |    1 [32m+[m
+ ...82-_jpg.rf.c27f09acd7b00946dcad0fc4a1971abb.txt |    1 [32m+[m
+ ...58-_jpg.rf.295bf75f10f59696ca5e1bd6f6bca27d.txt |    1 [32m+[m
+ ...58-_jpg.rf.6b891f5e2e5e56a0f0516447de1f064b.txt |    1 [32m+[m
+ ...58-_jpg.rf.b0fa202f5641d0354842466856630c2a.txt |    1 [32m+[m
+ ...71-_jpg.rf.327fac42349407f48757871a8df34a19.txt |    1 [32m+[m
+ ...71-_jpg.rf.bab3212edf0e4e5564d4d3f9b0780d18.txt |    1 [32m+[m
+ ...71-_jpg.rf.cfde3d83bad72e7cadebcad5f58d55e6.txt |    1 [32m+[m
+ ...83-_jpg.rf.0432020e7f363795cd2c558e8b9a06cd.txt |    1 [32m+[m
+ ...83-_jpg.rf.3c15d3fcd5267fe62525a9b12aff94d7.txt |    1 [32m+[m
+ ...83-_jpg.rf.66f2873855cfe17a311bc7d38b9a1cb0.txt |    1 [32m+[m
+ ...76-_jpg.rf.3d895200947d75a8ecafb1edb4d37835.txt |    1 [32m+[m
+ ...76-_jpg.rf.72fb6217c0ca37dcc2fe8f087de47f09.txt |    1 [32m+[m
+ ...76-_jpg.rf.85ba9fb0481febfa319ed447bfb5acef.txt |    1 [32m+[m
+ ...84-_jpg.rf.89d558b1a73f5284c66c383a09d71f5a.txt |    1 [32m+[m
+ ...84-_jpg.rf.954cbcb6a5729b1e23a66bf622a3362f.txt |    1 [32m+[m
+ ...84-_jpg.rf.dd287b23ee8999ed966427e485622e21.txt |    1 [32m+[m
+ ...89-_jpg.rf.45017a60d90414cb978dc3d69749b60e.txt |    1 [32m+[m
+ ...89-_jpg.rf.7e9146362e935a0a79c9e648f7e94954.txt |    1 [32m+[m
+ ...89-_jpg.rf.d9bb12bf59dc44e045edc43fd011f540.txt |    1 [32m+[m
+ ...95-_jpg.rf.9eac2b6b6c6eff62ecc7b4e156fde25d.txt |    1 [32m+[m
+ ...95-_jpg.rf.c1fe2cc79922896955e52c8b32a24437.txt |    1 [32m+[m
+ ...95-_jpg.rf.fd68a1bec542d64df202b3834823a5a9.txt |    1 [32m+[m
+ ...076_jpg.rf.2a744da84bd16a5f4e38d870bcc2f1d6.txt |    1 [32m+[m
+ ...076_jpg.rf.85530093098f10c125e31daea1c5d0ee.txt |    1 [32m+[m
+ ...076_jpg.rf.d5a49132d57b16dd4f03b66e84036622.txt |    1 [32m+[m
+ ...075_bmp.rf.0389ff61c9bdb7626a2490034c478226.txt |    1 [32m+[m
+ ...075_bmp.rf.b0630e42e108a491ca48197d66d53cb8.txt |    1 [32m+[m
+ ...075_bmp.rf.d31c3b3626124dee2adeded710498b8e.txt |    1 [32m+[m
+ ...029_jpg.rf.b2f7b2774178e2994a40f0d40f5cf550.txt |    1 [32m+[m
+ ...029_jpg.rf.bf2f45fb007def02241ea98381b28db4.txt |    1 [32m+[m
+ ...029_jpg.rf.fd06fc75a5256a06b84d0eb216906adb.txt |    1 [32m+[m
+ ...004_bmp.rf.0c713f081871f41c490d9975daf69eda.txt |    1 [32m+[m
+ ...004_bmp.rf.396d9692b7d6aca93d78120c75c7e9e3.txt |    1 [32m+[m
+ ...004_bmp.rf.9923c35b34b7dc220951805bf466d0b8.txt |    1 [32m+[m
+ ...056_jpg.rf.4d18341c3a000126743cabc8afd65273.txt |    1 [32m+[m
+ ...056_jpg.rf.dc4c9b6772dd7c2e5c8f130e820a4af9.txt |    1 [32m+[m
+ ...056_jpg.rf.e22c1a8d411f9289fec93fee4dec9f38.txt |    1 [32m+[m
+ ...015_bmp.rf.06c77e75402679892ff2df904b2c12d1.txt |    1 [32m+[m
+ ...015_bmp.rf.17a91e49e8700d108040b5eb98a8997f.txt |    1 [32m+[m
+ ...015_bmp.rf.695f5855986e57d2c0f26040e2eff4e9.txt |    1 [32m+[m
+ ...054_bmp.rf.14ba2159c7aae2684b47286afa97a762.txt |    1 [32m+[m
+ ...054_bmp.rf.9e53a67c5daf45923e223a7388103e02.txt |    1 [32m+[m
+ ...054_bmp.rf.e24ab64f77fe39b51835624dbce5fbe9.txt |    1 [32m+[m
+ ...055_jpg.rf.109fa200cd84e0e8d0903b0803faed5c.txt |    1 [32m+[m
+ ...055_jpg.rf.1225e9bdad8cc3391041ef7b544fa14a.txt |    1 [32m+[m
+ ...055_jpg.rf.fc5ebbac596945fb007f97580a8cca89.txt |    1 [32m+[m
+ ...063_jpg.rf.250b39b68ecc15d4a37a077b259dc9b6.txt |    1 [32m+[m
+ ...063_jpg.rf.7001eaaaea9cfe254d94711b983dae6e.txt |    1 [32m+[m
+ ...063_jpg.rf.e0b626e2f5ad010975b291351ebdc2e3.txt |    1 [32m+[m
+ ...072_jpg.rf.01a6efd26dd69228d3cc11a74129108f.txt |    1 [32m+[m
+ ...072_jpg.rf.18c2fad5cd2af6e306197c4dceada828.txt |    1 [32m+[m
+ ...072_jpg.rf.a323907a0ba09cbe54f4c2d443f5ff4c.txt |    1 [32m+[m
+ ...080_jpg.rf.2f0ddd2868ef2ad9534cc9ed01193be8.txt |    1 [32m+[m
+ ...080_jpg.rf.606b94301609f4002ff941d277bb8c13.txt |    1 [32m+[m
+ ...080_jpg.rf.97fb0d59fe1fe99504ab8964bd36b28d.txt |    1 [32m+[m
+ .../17_jpg.rf.252a3c5b22613e53142c0ce3f0197a56.txt |    1 [32m+[m
+ .../17_jpg.rf.aae3c606e95b21170108e7ac07e3ac7d.txt |    1 [32m+[m
+ .../17_jpg.rf.c607055810b792b36702cf2023595c48.txt |    1 [32m+[m
+ ...40_JPEG.rf.2f24527d88454d8d34fcb6c904f6bede.txt |    1 [32m+[m
+ ...40_JPEG.rf.646ca2c9a0b63785fc7ee0bf284e4beb.txt |    1 [32m+[m
+ ...40_JPEG.rf.eb241d43e83c01e91ec951d0b284f1a0.txt |    1 [32m+[m
+ ...73_JPEG.rf.06d3f4f168ac25a8191b17f806608d71.txt |    1 [32m+[m
+ ...73_JPEG.rf.1df4766901ed14b0cd1baeb7e035be70.txt |    1 [32m+[m
+ ...73_JPEG.rf.b59aebfb3fb0cf0c4c4e0b1cad117439.txt |    1 [32m+[m
+ ...76_JPEG.rf.0d2ca711064437a19f0120caaaebdaba.txt |    1 [32m+[m
+ ...76_JPEG.rf.1d52b394afb27e38a8dedf27273231d3.txt |    1 [32m+[m
+ ...76_JPEG.rf.54a4bbd06c43be71ca7b27d87263de02.txt |    1 [32m+[m
+ ...14_JPEG.rf.225f501b79256efc4bf4e16859b40a15.txt |    1 [32m+[m
+ ...14_JPEG.rf.529321b4dd66a4bee53a9ea70fd824e8.txt |    1 [32m+[m
+ ...14_JPEG.rf.e6af59c8d6f6428dd2ee8dfb0a386399.txt |    1 [32m+[m
+ ...25_JPEG.rf.2ec5c2cd1202f6beead36f18ae2bc487.txt |    2 [32m+[m
+ ...25_JPEG.rf.5ed6729884a8405e8942cd0507bac401.txt |    2 [32m+[m
+ ...25_JPEG.rf.7eb7891aa96626bac987195033a6a5c4.txt |    2 [32m+[m
+ ...27_JPEG.rf.ab960448d1bc333dc79e9eb91451aa72.txt |    3 [32m+[m
+ ...27_JPEG.rf.ea294974b71a5f83cefff28119478a5f.txt |    3 [32m+[m
+ ...27_JPEG.rf.fc62c4fd5f3004b283a7633d92cdef35.txt |    3 [32m+[m
+ ...49_JPEG.rf.04b7be4b4c1c4030a123b12db6cf4b55.txt |    1 [32m+[m
+ ...49_JPEG.rf.14f1a74278d37e34abfb3aaa8bca4f7c.txt |    1 [32m+[m
+ ...49_JPEG.rf.fa42cc8151fedc8c9d0dad766a4c07ed.txt |    1 [32m+[m
+ ...51_JPEG.rf.0b597cf9f7d42b3715c9ce1d2288e06f.txt |    2 [32m+[m
+ ...51_JPEG.rf.2d44680245d0a822c03a77e8c02a83b4.txt |    2 [32m+[m
+ ...51_JPEG.rf.dd252e92699d5d37b5bf5c5d4414c64e.txt |    2 [32m+[m
+ ...14_JPEG.rf.34eb529d10e3c6548e594e18453bbc91.txt |    2 [32m+[m
+ ...14_JPEG.rf.6a06e97f1b3bf58e91267eb87a4f3862.txt |    2 [32m+[m
+ ...14_JPEG.rf.ed45b10ab0fbe32d11741f5b02bc5f66.txt |    2 [32m+[m
+ ...495_jpg.rf.01adb1a00ca7ad20fa6d2c0c2433efc2.txt |    1 [32m+[m
+ ...495_jpg.rf.6d3fa71db1b274cd1d053bd7478a8c66.txt |    1 [32m+[m
+ ...495_jpg.rf.7c078b6c4cf1c42037562f1857a0ef66.txt |    1 [32m+[m
+ ...521_jpg.rf.2c281018c7a99190cd1ddee5b9464d20.txt |    1 [32m+[m
+ ...521_jpg.rf.561c0200f29ef0a63ae60364bc53600d.txt |    1 [32m+[m
+ ...521_jpg.rf.648caf1cc68278277ec16c66535146a8.txt |    1 [32m+[m
+ ...547_jpg.rf.5131be8c47fc3a045f0d3e817735a693.txt |    1 [32m+[m
+ ...547_jpg.rf.d6ce8870f492c45919e1608684cb0546.txt |    1 [32m+[m
+ ...547_jpg.rf.e078cf7dc869065b86346f0d761dd0e7.txt |    1 [32m+[m
+ ...25-_jpg.rf.6d98a788af99773154cff9301ff50472.txt |    1 [32m+[m
+ ...25-_jpg.rf.8988d909c68f6e9296a2597d5839d782.txt |    1 [32m+[m
+ ...25-_jpg.rf.e84d8770ed7b2a110e8de972c6996483.txt |    1 [32m+[m
+ ...28-_jpg.rf.4e11fd22378bf25489b31f5de0bac574.txt |    1 [32m+[m
+ ...28-_jpg.rf.5b7c3f59dd99c378db17effac79926c9.txt |    1 [32m+[m
+ ...28-_jpg.rf.c5de8598d534b3f1774b672e98a4e50e.txt |    1 [32m+[m
+ ...30-_jpg.rf.62096b564070fbb53090e470ef30e8c2.jpg |  Bin [31m0[m -> [32m27203[m bytes
+ ...59-_jpg.rf.5ea19e19745b83138968b49b0424042c.jpg |  Bin [31m0[m -> [32m122747[m bytes
+ ...72-_jpg.rf.8d4f15c644f6f6cc57c18605223248d2.jpg |  Bin [31m0[m -> [32m102445[m bytes
+ ...08-_jpg.rf.0dea2f64de9082d6926ed63faed6c24a.jpg |  Bin [31m0[m -> [32m47549[m bytes
+ ...11-_jpg.rf.01ef97ce307e702c2f64f303ca550ace.jpg |  Bin [31m0[m -> [32m53612[m bytes
+ ...JPG_jpg.rf.78510c42443abff6c1e5cd0291ad5e4d.jpg |  Bin [31m0[m -> [32m67007[m bytes
+ ...44-_jpg.rf.b939f6b9b279d6fd9281d24d8c62c96c.jpg |  Bin [31m0[m -> [32m27880[m bytes
+ ...58-_jpg.rf.3558c0e75bb3d4b339679acff4d78638.jpg |  Bin [31m0[m -> [32m50242[m bytes
+ ...020_bmp.rf.2d586b4b07f1cc5ad7666e84005c6f15.jpg |  Bin [31m0[m -> [32m40899[m bytes
+ ...006_jpg.rf.f6bf48e6000b284a59c88d3bc67d1406.jpg |  Bin [31m0[m -> [32m41473[m bytes
+ ...024_bmp.rf.46a2a099a5b38c92776614a14345ba75.jpg |  Bin [31m0[m -> [32m37488[m bytes
+ ...022_jpg.rf.245bb0c838979f54d13efc07e35e91e8.jpg |  Bin [31m0[m -> [32m40835[m bytes
+ ...082_jpg.rf.9712606d9f7e1b77bc4a859c71c3d853.jpg |  Bin [31m0[m -> [32m43269[m bytes
+ ...032_jpg.rf.8fb8ca7dcd46ce57318afc940931e2f2.jpg |  Bin [31m0[m -> [32m38426[m bytes
+ ...020_jpg.rf.82ff152a13ae235c7ad0a40de80df0f7.jpg |  Bin [31m0[m -> [32m31924[m bytes
+ ...068_jpg.rf.71c42b3f0308f0a0deb3181e6a7a0fd6.jpg |  Bin [31m0[m -> [32m40746[m bytes
+ .../38_jpg.rf.5529f3c924e414d223e5b6351564f2d8.jpg |  Bin [31m0[m -> [32m53614[m bytes
+ .../65_jpg.rf.602636366d6c18b9a2ccf3b42d13ea99.jpg |  Bin [31m0[m -> [32m38100[m bytes
+ ...016_jpg.rf.9eb98604101c9144911b7bf281e35c58.jpg |  Bin [31m0[m -> [32m43127[m bytes
+ ...39_JPEG.rf.cb6d6b63b5f1208998e226de127a7b66.jpg |  Bin [31m0[m -> [32m47178[m bytes
+ ...71_JPEG.rf.b8ee64a4a270717f693965eafd665f88.jpg |  Bin [31m0[m -> [32m44173[m bytes
+ ...90_JPEG.rf.be315ff9bb3897b5485951343fad7b4d.jpg |  Bin [31m0[m -> [32m46426[m bytes
+ ...00_JPEG.rf.b6a63695a64cc05626813085c3c8e353.jpg |  Bin [31m0[m -> [32m51057[m bytes
+ ...23_JPEG.rf.a4fad17cdd099b0368a31c756f91bc98.jpg |  Bin [31m0[m -> [32m45839[m bytes
+ ...74_JPEG.rf.c017b74d59a4059dd82df67062b2c9d6.jpg |  Bin [31m0[m -> [32m32320[m bytes
+ ...21_JPEG.rf.6fae838bfa91e9351ffa6054cf203017.jpg |  Bin [31m0[m -> [32m48446[m bytes
+ ...22_JPEG.rf.5d08c0dcb933bb19f014f260cc914983.jpg |  Bin [31m0[m -> [32m40251[m bytes
+ ...35_JPEG.rf.ba450f7c3410891a2644bfeee14d73c4.jpg |  Bin [31m0[m -> [32m38607[m bytes
+ ...47_JPEG.rf.0089c69ba0e36a2a9290787ddce2bf39.jpg |  Bin [31m0[m -> [32m30663[m bytes
+ ...50_JPEG.rf.93354e7f0f89326859799995c7953466.jpg |  Bin [31m0[m -> [32m26772[m bytes
+ ...40_JPEG.rf.67127827766c0171cd30440db0e86f64.jpg |  Bin [31m0[m -> [32m35133[m bytes
+ ...V-0_jpg.rf.f7f9542bb212c351dba588c8114b6e2b.jpg |  Bin [31m0[m -> [32m35761[m bytes
+ ...482_jpg.rf.ea4dffc0429c001ac88a84e1ee545564.jpg |  Bin [31m0[m -> [32m88368[m bytes
+ ...500_jpg.rf.e7d2d9e898d0a2e2c45f87ad4643fe66.jpg |  Bin [31m0[m -> [32m80898[m bytes
+ ...507_jpg.rf.e6c9d0c067c34564916742183d52ce22.jpg |  Bin [31m0[m -> [32m80286[m bytes
+ ...514_jpg.rf.4cacb262edc6469cc91d5ccdffd8abba.jpg |  Bin [31m0[m -> [32m70152[m bytes
+ ...534_jpg.rf.b682187340fc067b3f70f1f8928a79e8.jpg |  Bin [31m0[m -> [32m101020[m bytes
+ ...20-_jpg.rf.c851aa351d6c858305ab254adc93fcbf.jpg |  Bin [31m0[m -> [32m26996[m bytes
+ ...30-_jpg.rf.62096b564070fbb53090e470ef30e8c2.txt |    1 [32m+[m
+ ...59-_jpg.rf.5ea19e19745b83138968b49b0424042c.txt |    1 [32m+[m
+ ...72-_jpg.rf.8d4f15c644f6f6cc57c18605223248d2.txt |    1 [32m+[m
+ ...08-_jpg.rf.0dea2f64de9082d6926ed63faed6c24a.txt |    1 [32m+[m
+ ...11-_jpg.rf.01ef97ce307e702c2f64f303ca550ace.txt |    2 [32m+[m
+ ...JPG_jpg.rf.78510c42443abff6c1e5cd0291ad5e4d.txt |    1 [32m+[m
+ ...44-_jpg.rf.b939f6b9b279d6fd9281d24d8c62c96c.txt |    1 [32m+[m
+ ...58-_jpg.rf.3558c0e75bb3d4b339679acff4d78638.txt |    2 [32m+[m
+ ...020_bmp.rf.2d586b4b07f1cc5ad7666e84005c6f15.txt |    1 [32m+[m
+ ...006_jpg.rf.f6bf48e6000b284a59c88d3bc67d1406.txt |    1 [32m+[m
+ ...024_bmp.rf.46a2a099a5b38c92776614a14345ba75.txt |    1 [32m+[m
+ ...022_jpg.rf.245bb0c838979f54d13efc07e35e91e8.txt |    1 [32m+[m
+ ...082_jpg.rf.9712606d9f7e1b77bc4a859c71c3d853.txt |    2 [32m+[m
+ ...032_jpg.rf.8fb8ca7dcd46ce57318afc940931e2f2.txt |    1 [32m+[m
+ ...020_jpg.rf.82ff152a13ae235c7ad0a40de80df0f7.txt |    1 [32m+[m
+ ...068_jpg.rf.71c42b3f0308f0a0deb3181e6a7a0fd6.txt |    1 [32m+[m
+ .../38_jpg.rf.5529f3c924e414d223e5b6351564f2d8.txt |    1 [32m+[m
+ .../65_jpg.rf.602636366d6c18b9a2ccf3b42d13ea99.txt |    1 [32m+[m
+ ...016_jpg.rf.9eb98604101c9144911b7bf281e35c58.txt |    1 [32m+[m
+ ...39_JPEG.rf.cb6d6b63b5f1208998e226de127a7b66.txt |    1 [32m+[m
+ ...71_JPEG.rf.b8ee64a4a270717f693965eafd665f88.txt |    2 [32m+[m
+ ...90_JPEG.rf.be315ff9bb3897b5485951343fad7b4d.txt |    1 [32m+[m
+ ...00_JPEG.rf.b6a63695a64cc05626813085c3c8e353.txt |    1 [32m+[m
+ ...23_JPEG.rf.a4fad17cdd099b0368a31c756f91bc98.txt |    2 [32m+[m
+ ...74_JPEG.rf.c017b74d59a4059dd82df67062b2c9d6.txt |    1 [32m+[m
+ ...21_JPEG.rf.6fae838bfa91e9351ffa6054cf203017.txt |    3 [32m+[m
+ ...22_JPEG.rf.5d08c0dcb933bb19f014f260cc914983.txt |    2 [32m+[m
+ ...35_JPEG.rf.ba450f7c3410891a2644bfeee14d73c4.txt |    1 [32m+[m
+ ...47_JPEG.rf.0089c69ba0e36a2a9290787ddce2bf39.txt |    1 [32m+[m
+ ...50_JPEG.rf.93354e7f0f89326859799995c7953466.txt |    1 [32m+[m
+ ...40_JPEG.rf.67127827766c0171cd30440db0e86f64.txt |    1 [32m+[m
+ ...V-0_jpg.rf.f7f9542bb212c351dba588c8114b6e2b.txt |    4 [32m+[m
+ ...482_jpg.rf.ea4dffc0429c001ac88a84e1ee545564.txt |    1 [32m+[m
+ ...500_jpg.rf.e7d2d9e898d0a2e2c45f87ad4643fe66.txt |    1 [32m+[m
+ ...507_jpg.rf.e6c9d0c067c34564916742183d52ce22.txt |    1 [32m+[m
+ ...514_jpg.rf.4cacb262edc6469cc91d5ccdffd8abba.txt |    1 [32m+[m
+ ...534_jpg.rf.b682187340fc067b3f70f1f8928a79e8.txt |    2 [32m+[m
+ ...20-_jpg.rf.c851aa351d6c858305ab254adc93fcbf.txt |    1 [32m+[m
+ data/raw/wh1-wood-cracks/README.dataset.txt        |   56 [32m+[m
+ data/raw/wh1-wood-cracks/README.roboflow.txt       |   32 [32m+[m
+ data/raw/wh1-wood-cracks/data.yaml                 |   16 [32m+[m
+ ...15-_jpg.rf.780703d06b9f28e9e3979dfd1ce6a5fd.jpg |  Bin [31m0[m -> [32m42800[m bytes
+ ...17-_jpg.rf.d96a38205c47af272c9525e5fa28a653.jpg |  Bin [31m0[m -> [32m40401[m bytes
+ ...20-_jpg.rf.cf9ce07f815c88b977048692b39ccc86.jpg |  Bin [31m0[m -> [32m27286[m bytes
+ ...22-_jpg.rf.2015ef509ca5be40625c6e6580385aa7.jpg |  Bin [31m0[m -> [32m27349[m bytes
+ ...35-_jpg.rf.4bea15d552c08c9af725bf41e86a1bb4.jpg |  Bin [31m0[m -> [32m31346[m bytes
+ ...04-_jpg.rf.7ae03009c1172b6a03cf9588989cb61f.jpg |  Bin [31m0[m -> [32m37723[m bytes
+ ...40-_jpg.rf.ca8a6502ffa1791741de64ff236f0565.jpg |  Bin [31m0[m -> [32m32454[m bytes
+ ...68-_jpg.rf.8f252cb220e8e5035b998a9e9ba05abe.jpg |  Bin [31m0[m -> [32m88575[m bytes
+ ...75-_jpg.rf.dadb2aa89003afd96b60ba1f8d3897c1.jpg |  Bin [31m0[m -> [32m106635[m bytes
+ ...88-_jpg.rf.957121f0bf8c7186c8e41b18157bd0f8.jpg |  Bin [31m0[m -> [32m95560[m bytes
+ ...97-_jpg.rf.2481db8dcdda6df2a71447714671c836.jpg |  Bin [31m0[m -> [32m40312[m bytes
+ ...36-_jpg.rf.16d156499f11dde6d11d9ab603e354e2.jpg |  Bin [31m0[m -> [32m35776[m bytes
+ ...19-_jpg.rf.68eabb7a7d4a61fee00371bc1e13948c.jpg |  Bin [31m0[m -> [32m39152[m bytes
+ ...JPG_jpg.rf.ece621dc07e30da8a9e12f127b618407.jpg |  Bin [31m0[m -> [32m52287[m bytes
+ ...59-_jpg.rf.fa73d265fe2aa32809088f999b6c9d14.jpg |  Bin [31m0[m -> [32m22165[m bytes
+ ...93-_jpg.rf.d7c8bfd0fa16c246e4dc2ce0ffd3c600.jpg |  Bin [31m0[m -> [32m28781[m bytes
+ ...02-_jpg.rf.56c38287a86d7e013051544b95f11441.jpg |  Bin [31m0[m -> [32m16794[m bytes
+ ...JPG_jpg.rf.4c2c43dcd2d61135afa2adf2044e3365.jpg |  Bin [31m0[m -> [32m78318[m bytes
+ ...JPG_jpg.rf.2d17b56e7c6c41dd5a9e1265e2ea5ef2.jpg |  Bin [31m0[m -> [32m76686[m bytes
+ ...JPG_jpg.rf.dbbd7748c15224f80475e666bdfb545f.jpg |  Bin [31m0[m -> [32m59499[m bytes
+ ...31-_jpg.rf.97cba6f5bab996562155e52e3a9e539b.jpg |  Bin [31m0[m -> [32m36532[m bytes
+ ...13-_jpg.rf.b96438bbd5bfd160bbaf6e040b491022.jpg |  Bin [31m0[m -> [32m57793[m bytes
+ ...25-_jpg.rf.95996192b0865987689b5e5b0533b0c2.jpg |  Bin [31m0[m -> [32m52017[m bytes
+ ...35-_jpg.rf.a225d7347b3eb53d8e4bb923efcb5907.jpg |  Bin [31m0[m -> [32m29378[m bytes
+ ...40-_jpg.rf.399848942c0643fbf3f66a71a30181ed.jpg |  Bin [31m0[m -> [32m26242[m bytes
+ ...JPG_jpg.rf.663a08f9e83db08ab6121bad4668a8e1.jpg |  Bin [31m0[m -> [32m63610[m bytes
+ ...JPG_jpg.rf.8089546097d4ac5ae777ca8f511e4201.jpg |  Bin [31m0[m -> [32m62249[m bytes
+ ...89-_jpg.rf.103d6a2764c3bef617bb9c3f7953d718.jpg |  Bin [31m0[m -> [32m26780[m bytes
+ ...98-_jpg.rf.0fc1210041ed0ebbcaee0c82d24c62f7.jpg |  Bin [31m0[m -> [32m63304[m bytes
+ ...07-_jpg.rf.40dd60915adf919dafb72f8f62ad5e33.jpg |  Bin [31m0[m -> [32m53395[m bytes
+ ...13-_jpg.rf.03b52952072f63198edb5ba69a1f55b9.jpg |  Bin [31m0[m -> [32m44327[m bytes
+ ...46-_jpg.rf.b5b296c2c6a4fe5da8752298dbc4b95a.jpg |  Bin [31m0[m -> [32m40594[m bytes
+ ...08-_jpg.rf.3473cd33e1e671cdd22622ed21460492.jpg |  Bin [31m0[m -> [32m71558[m bytes
+ ...53-_jpg.rf.1a8708442e5bdc399549c5a9db96d500.jpg |  Bin [31m0[m -> [32m26112[m bytes
+ ...46-_jpg.rf.263e1ba3f6a2c684aea0f79377a3d5e3.jpg |  Bin [31m0[m -> [32m41960[m bytes
+ ...80-_jpg.rf.405fb570086af63f7fac044dfb80e0e1.jpg |  Bin [31m0[m -> [32m76503[m bytes
+ ...81-_jpg.rf.7c6407b27fc4e1547ef2d2efcfcde8ee.jpg |  Bin [31m0[m -> [32m39611[m bytes
+ ...05-_jpg.rf.cec5040e385e9b1142e96510cafb37e6.jpg |  Bin [31m0[m -> [32m27075[m bytes
+ ...07-_jpg.rf.abc75f6255f24dc7193f947d1abd2c9f.jpg |  Bin [31m0[m -> [32m23401[m bytes
+ ...33-_jpg.rf.e2d5d2d59b467b19a8b7fb2c64ae1833.jpg |  Bin [31m0[m -> [32m29847[m bytes
+ ...94-_jpg.rf.22c8f86f8265a077893832ac073e6a6a.jpg |  Bin [31m0[m -> [32m25115[m bytes
+ ...42-_jpg.rf.1b61c0f3685c84b7f110a8cb25e5eaa6.jpg |  Bin [31m0[m -> [32m43960[m bytes
+ ...95-_jpg.rf.686050324437e308a93fb0a5ff4361ef.jpg |  Bin [31m0[m -> [32m33029[m bytes
+ ...64-_jpg.rf.a72a3ef1334628ef66fe9885bdeb47cf.jpg |  Bin [31m0[m -> [32m35946[m bytes
+ ...81-_jpg.rf.cad6ba6f44c5b22848e5c89b93d416e1.jpg |  Bin [31m0[m -> [32m24095[m bytes
+ ...82-_jpg.rf.83f212ab2d68e4f5d37ec755cf060213.jpg |  Bin [31m0[m -> [32m22203[m bytes
+ ...84-_jpg.rf.abbfbd48df6bf29e3143643d2727e9af.jpg |  Bin [31m0[m -> [32m32888[m bytes
+ ...88-_jpg.rf.264b1a1f7c3355d974a988118ef26cd8.jpg |  Bin [31m0[m -> [32m53331[m bytes
+ ...034_jpg.rf.ea5df309fc728742c22b5e1b0f2ccdbc.jpg |  Bin [31m0[m -> [32m37711[m bytes
+ ...044_jpg.rf.0cb6f435837323eac016a0e93e8d559b.jpg |  Bin [31m0[m -> [32m41109[m bytes
+ ...073_jpg.rf.adee51aa9fb3a77cc5b8783e7d10399c.jpg |  Bin [31m0[m -> [32m44068[m bytes
+ ...084_jpg.rf.ebed4b2e1930e373b635517979e1ba79.jpg |  Bin [31m0[m -> [32m43310[m bytes
+ ...005_jpg.rf.5d5cba7f4b4a311da92a4b5c242a7ce0.jpg |  Bin [31m0[m -> [32m42788[m bytes
+ ...053_jpg.rf.bfa82851925d1e855100d52383d744f2.jpg |  Bin [31m0[m -> [32m39867[m bytes
+ ...081_jpg.rf.1bf5907a8e91f282d76492715f1a903c.jpg |  Bin [31m0[m -> [32m43975[m bytes
+ ...000_jpg.rf.5ef73101cbb53dfcdc9054c6bb236e74.jpg |  Bin [31m0[m -> [32m39682[m bytes
+ ...025_jpg.rf.ec534587caabfe112fcc990c70d85e94.jpg |  Bin [31m0[m -> [32m39026[m bytes
+ ...079_jpg.rf.c18362d96c1d156e4b8d378e30b5f1e3.jpg |  Bin [31m0[m -> [32m38424[m bytes
+ ...026_jpg.rf.1c2a76282620c5bda9671108941b8858.jpg |  Bin [31m0[m -> [32m39364[m bytes
+ ...043_jpg.rf.a3393a30bc2882a63742e7f6f627857b.jpg |  Bin [31m0[m -> [32m39853[m bytes
+ ...071_jpg.rf.d9961e8c02835353c0d9b56435c25edc.jpg |  Bin [31m0[m -> [32m37741[m bytes
+ ...023_bmp.rf.f6428b794d5dd55b182e0fd4a68287f4.jpg |  Bin [31m0[m -> [32m42555[m bytes
+ ...017_jpg.rf.e7894e4aa3e6546beb1c59d0860f4dce.jpg |  Bin [31m0[m -> [32m40507[m bytes
+ ...062_bmp.rf.e2cb9634d272991179902a8396d3cc96.jpg |  Bin [31m0[m -> [32m30009[m bytes
+ ...062_jpg.rf.a55c62a5f12f9f7229f475201159fce9.jpg |  Bin [31m0[m -> [32m30065[m bytes
+ ...058_jpg.rf.e61bb71d9725c7afbb131dd647b58e90.jpg |  Bin [31m0[m -> [32m42879[m bytes
+ ...017_jpg.rf.fc94ba59c02264fc15f7e5f149bedc41.jpg |  Bin [31m0[m -> [32m41168[m bytes
+ ...023_bmp.rf.f651c790bf00d3bedd72c23aa5b3b4cf.jpg |  Bin [31m0[m -> [32m40257[m bytes
+ ...023_jpg.rf.7edd73d74898a62a0023795208627c1b.jpg |  Bin [31m0[m -> [32m40277[m bytes
+ ...043_jpg.rf.7a5495a441c84f79d3b36df4e6cb1df3.jpg |  Bin [31m0[m -> [32m39843[m bytes
+ ...013_bmp.rf.97d7ba2cb73e6dddeaf0b9575a975383.jpg |  Bin [31m0[m -> [32m34651[m bytes
+ ...065_jpg.rf.3b6198c10e00e131079c788cda39dc68.jpg |  Bin [31m0[m -> [32m39975[m bytes
+ ...005_jpg.rf.e01ec5b82d9550b6603d3351b1496ee6.jpg |  Bin [31m0[m -> [32m37223[m bytes
+ ...007_jpg.rf.6ebcbbe81480a9bf0bca14a6f7510bb2.jpg |  Bin [31m0[m -> [32m38373[m bytes
+ ...074_jpg.rf.9425d74617ef658827dd7c6ec2e18233.jpg |  Bin [31m0[m -> [32m36962[m bytes
+ .../13_jpg.rf.6889caaa311c3b05bfa5d4323bdb5a9e.jpg |  Bin [31m0[m -> [32m44737[m bytes
+ .../1_jpg.rf.2f9da79dec35336087b153d3ef80b03d.jpg  |  Bin [31m0[m -> [32m46661[m bytes
+ .../39_jpg.rf.8f26d3286e85e02efd0db83708347f3f.jpg |  Bin [31m0[m -> [32m37239[m bytes
+ .../5_jpg.rf.6d0a21f410cf517f472d77819810e0c7.jpg  |  Bin [31m0[m -> [32m40942[m bytes
+ ...076_jpg.rf.405a79c07a24ff847cdb75429f17d91c.jpg |  Bin [31m0[m -> [32m41978[m bytes
+ ...079_bmp.rf.a205715faefc7db543c71a8be1877ad4.jpg |  Bin [31m0[m -> [32m29001[m bytes
+ ...28_JPEG.rf.bb6a379bfba80337dc03908ca7ec0a68.jpg |  Bin [31m0[m -> [32m50013[m bytes
+ ...33_JPEG.rf.f174f6ff1e45e2e8acdae819746dec17.jpg |  Bin [31m0[m -> [32m51334[m bytes
+ ...35_JPEG.rf.19bc0a8fb2aa96f86660c72b500ed771.jpg |  Bin [31m0[m -> [32m43995[m bytes
+ ...43_JPEG.rf.f09410d71201a60e0823d290d824e9bc.jpg |  Bin [31m0[m -> [32m39939[m bytes
+ ...80_JPEG.rf.418b491e715487024b967cfc7d560d09.jpg |  Bin [31m0[m -> [32m42981[m bytes
+ ...94_JPEG.rf.d500b7c4d4b326a56a87676b3928cdb5.jpg |  Bin [31m0[m -> [32m56372[m bytes
+ ...98_JPEG.rf.4b3b75bcb8f5a024708fa135375834f9.jpg |  Bin [31m0[m -> [32m56531[m bytes
+ ...13_JPEG.rf.c897202dcf89a7e2c39f95ee1b2d0089.jpg |  Bin [31m0[m -> [32m49290[m bytes
+ ...18_JPEG.rf.c93ea5ba7b39e91852f12c5a1f85e5da.jpg |  Bin [31m0[m -> [32m56910[m bytes
+ ...25_JPEG.rf.59514bb28cd58ad449caf87667d63b27.jpg |  Bin [31m0[m -> [32m47497[m bytes
+ ...28_JPEG.rf.5b60ccf1e064fbe9d05abe7e4c555ffc.jpg |  Bin [31m0[m -> [32m52919[m bytes
+ ...36_JPEG.rf.e4985ef0b29ce52d3cba629c938a7eb3.jpg |  Bin [31m0[m -> [32m47876[m bytes
+ ...45_JPEG.rf.bd4fdace1967763ae374bde5dd802a97.jpg |  Bin [31m0[m -> [32m65387[m bytes
+ ...72_JPEG.rf.53cdbe9e7a9d2b844c9739a97b3c5a17.jpg |  Bin [31m0[m -> [32m28537[m bytes
+ ...79_JPEG.rf.4f797ca1c8f127cc6c6b2b9a2e3db0fd.jpg |  Bin [31m0[m -> [32m21809[m bytes
+ ...92_JPEG.rf.f44486bbbb281b9af1ea781e986fa611.jpg |  Bin [31m0[m -> [32m24256[m bytes
+ ...16_JPEG.rf.ee09ef4cbdf25882d06bdcb6a35a6ead.jpg |  Bin [31m0[m -> [32m23975[m bytes
+ ...37_JPEG.rf.53a27f88d6cb9cfc50743795d6edbb09.jpg |  Bin [31m0[m -> [32m38237[m bytes
+ ...39_JPEG.rf.7e913ca74097f4afab3d5f8f191878bf.jpg |  Bin [31m0[m -> [32m34293[m bytes
+ ...V-0_jpg.rf.ea06ce7d609e6cd89ec54da042f85dec.jpg |  Bin [31m0[m -> [32m40380[m bytes
+ ...V-0_jpg.rf.0de4d35d704229ac1b1f1ef5e9126bca.jpg |  Bin [31m0[m -> [32m42386[m bytes
+ ...76_JPEG.rf.07e807391d489d6eb4a92e61fb89a94d.jpg |  Bin [31m0[m -> [32m43013[m bytes
+ ...V-0_jpg.rf.546faf3e8b6ff31a980e7fc3888d0437.jpg |  Bin [31m0[m -> [32m34550[m bytes
+ ...94_JPEG.rf.116df832a1fa7e4cf65b5f8d3aded234.jpg |  Bin [31m0[m -> [32m48137[m bytes
+ ...12_JPEG.rf.099b8d8bc49f4ee68e7301f833d96f4d.jpg |  Bin [31m0[m -> [32m38763[m bytes
+ ...V-0_jpg.rf.fcfead2f03894151bf8eb549a9004df1.jpg |  Bin [31m0[m -> [32m28882[m bytes
+ ...V-0_jpg.rf.cb4e37b835533b365f23f89a30fb2a12.jpg |  Bin [31m0[m -> [32m36418[m bytes
+ ...V-0_jpg.rf.0735e237968195330b92fd189b53e088.jpg |  Bin [31m0[m -> [32m38202[m bytes
+ ...39_JPEG.rf.23c56579f95dda142645f670e7b89097.jpg |  Bin [31m0[m -> [32m36328[m bytes
+ ...06_JPEG.rf.df88845d4cff84f08035e14447fdb700.jpg |  Bin [31m0[m -> [32m39280[m bytes
+ ...V-0_jpg.rf.d4fced04b93bfdaaedcf187b758ee168.jpg |  Bin [31m0[m -> [32m42825[m bytes
+ ...487_jpg.rf.16ad1d1f5193d1ae3ba32dbbb6cdc03f.jpg |  Bin [31m0[m -> [32m96893[m bytes
+ ...489_jpg.rf.503b68b0aaebb691fcb987a6d666f87f.jpg |  Bin [31m0[m -> [32m78800[m bytes
+ ...492_jpg.rf.5a5d333aeaeeeb87d9961b85fb69c989.jpg |  Bin [31m0[m -> [32m95488[m bytes
+ ...515_jpg.rf.303699ec3ed10827dd48c12c20243617.jpg |  Bin [31m0[m -> [32m62961[m bytes
+ ...517_jpg.rf.5d3e6aeca3921c4614ded728f2e68c39.jpg |  Bin [31m0[m -> [32m44478[m bytes
+ ...524_jpg.rf.5d3073d9f29bd61763073b0d79c373d3.jpg |  Bin [31m0[m -> [32m58746[m bytes
+ ...557_jpg.rf.a5d0f5dd282280a74fc5ea1e08f6af0b.jpg |  Bin [31m0[m -> [32m85523[m bytes
+ ...47-_jpg.rf.df69b8bad90c651ce52140c3d655a7a6.jpg |  Bin [31m0[m -> [32m26533[m bytes
+ ...50-_jpg.rf.6362fed0822c39d5c670faaf12c142ee.jpg |  Bin [31m0[m -> [32m30824[m bytes
+ ...-3-_jpg.rf.92e3fb16fa2e2ae9e2db4703d9aab92c.jpg |  Bin [31m0[m -> [32m39294[m bytes
+ ...33-_jpg.rf.d35167d2d88f4bdfac2b7e78a75f05bb.jpg |  Bin [31m0[m -> [32m28724[m bytes
+ ...43-_jpg.rf.3527597d6a544de048db9e3dbde4a986.jpg |  Bin [31m0[m -> [32m29304[m bytes
+ ...52-_jpg.rf.76e58aede9b483897597e8892a0a496a.jpg |  Bin [31m0[m -> [32m17189[m bytes
+ ...58-_jpg.rf.6d973cbb46cfda8e56c27744d7ac5519.jpg |  Bin [31m0[m -> [32m36260[m bytes
+ ...74-_jpg.rf.8f522acdc730673c892310b0fa65b8d8.jpg |  Bin [31m0[m -> [32m60339[m bytes
+ ...87-_jpg.rf.aaab9102f44b269d572f16648ba49c9a.jpg |  Bin [31m0[m -> [32m39222[m bytes
+ ...15-_jpg.rf.780703d06b9f28e9e3979dfd1ce6a5fd.txt |    1 [32m+[m
+ ...17-_jpg.rf.d96a38205c47af272c9525e5fa28a653.txt |    1 [32m+[m
+ ...20-_jpg.rf.cf9ce07f815c88b977048692b39ccc86.txt |    1 [32m+[m
+ ...22-_jpg.rf.2015ef509ca5be40625c6e6580385aa7.txt |    2 [32m+[m
+ ...35-_jpg.rf.4bea15d552c08c9af725bf41e86a1bb4.txt |    1 [32m+[m
+ ...04-_jpg.rf.7ae03009c1172b6a03cf9588989cb61f.txt |    1 [32m+[m
+ ...40-_jpg.rf.ca8a6502ffa1791741de64ff236f0565.txt |    2 [32m+[m
+ ...68-_jpg.rf.8f252cb220e8e5035b998a9e9ba05abe.txt |    2 [32m+[m
+ ...75-_jpg.rf.dadb2aa89003afd96b60ba1f8d3897c1.txt |    1 [32m+[m
+ ...88-_jpg.rf.957121f0bf8c7186c8e41b18157bd0f8.txt |    1 [32m+[m
+ ...97-_jpg.rf.2481db8dcdda6df2a71447714671c836.txt |    1 [32m+[m
+ ...36-_jpg.rf.16d156499f11dde6d11d9ab603e354e2.txt |    1 [32m+[m
+ ...19-_jpg.rf.68eabb7a7d4a61fee00371bc1e13948c.txt |    2 [32m+[m
+ ...JPG_jpg.rf.ece621dc07e30da8a9e12f127b618407.txt |    1 [32m+[m
+ ...59-_jpg.rf.fa73d265fe2aa32809088f999b6c9d14.txt |    1 [32m+[m
+ ...93-_jpg.rf.d7c8bfd0fa16c246e4dc2ce0ffd3c600.txt |    4 [32m+[m
+ ...02-_jpg.rf.56c38287a86d7e013051544b95f11441.txt |    2 [32m+[m
+ ...JPG_jpg.rf.4c2c43dcd2d61135afa2adf2044e3365.txt |    2 [32m+[m
+ ...JPG_jpg.rf.2d17b56e7c6c41dd5a9e1265e2ea5ef2.txt |    2 [32m+[m
+ ...JPG_jpg.rf.dbbd7748c15224f80475e666bdfb545f.txt |    1 [32m+[m
+ ...31-_jpg.rf.97cba6f5bab996562155e52e3a9e539b.txt |    1 [32m+[m
+ ...13-_jpg.rf.b96438bbd5bfd160bbaf6e040b491022.txt |    1 [32m+[m
+ ...25-_jpg.rf.95996192b0865987689b5e5b0533b0c2.txt |    1 [32m+[m
+ ...35-_jpg.rf.a225d7347b3eb53d8e4bb923efcb5907.txt |    1 [32m+[m
+ ...40-_jpg.rf.399848942c0643fbf3f66a71a30181ed.txt |    2 [32m+[m
+ ...JPG_jpg.rf.663a08f9e83db08ab6121bad4668a8e1.txt |    5 [32m+[m
+ ...JPG_jpg.rf.8089546097d4ac5ae777ca8f511e4201.txt |    2 [32m+[m
+ ...89-_jpg.rf.103d6a2764c3bef617bb9c3f7953d718.txt |    1 [32m+[m
+ ...98-_jpg.rf.0fc1210041ed0ebbcaee0c82d24c62f7.txt |    1 [32m+[m
+ ...07-_jpg.rf.40dd60915adf919dafb72f8f62ad5e33.txt |    2 [32m+[m
+ ...13-_jpg.rf.03b52952072f63198edb5ba69a1f55b9.txt |    1 [32m+[m
+ ...46-_jpg.rf.b5b296c2c6a4fe5da8752298dbc4b95a.txt |    2 [32m+[m
+ ...08-_jpg.rf.3473cd33e1e671cdd22622ed21460492.txt |    1 [32m+[m
+ ...53-_jpg.rf.1a8708442e5bdc399549c5a9db96d500.txt |    2 [32m+[m
+ ...46-_jpg.rf.263e1ba3f6a2c684aea0f79377a3d5e3.txt |    1 [32m+[m
+ ...80-_jpg.rf.405fb570086af63f7fac044dfb80e0e1.txt |    1 [32m+[m
+ ...81-_jpg.rf.7c6407b27fc4e1547ef2d2efcfcde8ee.txt |    2 [32m+[m
+ ...05-_jpg.rf.cec5040e385e9b1142e96510cafb37e6.txt |    1 [32m+[m
+ ...07-_jpg.rf.abc75f6255f24dc7193f947d1abd2c9f.txt |    1 [32m+[m
+ ...33-_jpg.rf.e2d5d2d59b467b19a8b7fb2c64ae1833.txt |    2 [32m+[m
+ ...94-_jpg.rf.22c8f86f8265a077893832ac073e6a6a.txt |    3 [32m+[m
+ ...42-_jpg.rf.1b61c0f3685c84b7f110a8cb25e5eaa6.txt |    1 [32m+[m
+ ...95-_jpg.rf.686050324437e308a93fb0a5ff4361ef.txt |    2 [32m+[m
+ ...64-_jpg.rf.a72a3ef1334628ef66fe9885bdeb47cf.txt |    1 [32m+[m
+ ...81-_jpg.rf.cad6ba6f44c5b22848e5c89b93d416e1.txt |    1 [32m+[m
+ ...82-_jpg.rf.83f212ab2d68e4f5d37ec755cf060213.txt |    1 [32m+[m
+ ...84-_jpg.rf.abbfbd48df6bf29e3143643d2727e9af.txt |    3 [32m+[m
+ ...88-_jpg.rf.264b1a1f7c3355d974a988118ef26cd8.txt |    1 [32m+[m
+ ...034_jpg.rf.ea5df309fc728742c22b5e1b0f2ccdbc.txt |    1 [32m+[m
+ ...044_jpg.rf.0cb6f435837323eac016a0e93e8d559b.txt |    2 [32m+[m
+ ...073_jpg.rf.adee51aa9fb3a77cc5b8783e7d10399c.txt |    3 [32m+[m
+ ...084_jpg.rf.ebed4b2e1930e373b635517979e1ba79.txt |    1 [32m+[m
+ ...005_jpg.rf.5d5cba7f4b4a311da92a4b5c242a7ce0.txt |    2 [32m+[m
+ ...053_jpg.rf.bfa82851925d1e855100d52383d744f2.txt |    1 [32m+[m
+ ...081_jpg.rf.1bf5907a8e91f282d76492715f1a903c.txt |    2 [32m+[m
+ ...000_jpg.rf.5ef73101cbb53dfcdc9054c6bb236e74.txt |    2 [32m+[m
+ ...025_jpg.rf.ec534587caabfe112fcc990c70d85e94.txt |    1 [32m+[m
+ ...079_jpg.rf.c18362d96c1d156e4b8d378e30b5f1e3.txt |    2 [32m+[m
+ ...026_jpg.rf.1c2a76282620c5bda9671108941b8858.txt |    2 [32m+[m
+ ...043_jpg.rf.a3393a30bc2882a63742e7f6f627857b.txt |    1 [32m+[m
+ ...071_jpg.rf.d9961e8c02835353c0d9b56435c25edc.txt |    3 [32m+[m
+ ...023_bmp.rf.f6428b794d5dd55b182e0fd4a68287f4.txt |    2 [32m+[m
+ ...017_jpg.rf.e7894e4aa3e6546beb1c59d0860f4dce.txt |    2 [32m+[m
+ ...062_bmp.rf.e2cb9634d272991179902a8396d3cc96.txt |    1 [32m+[m
+ ...062_jpg.rf.a55c62a5f12f9f7229f475201159fce9.txt |    1 [32m+[m
+ ...058_jpg.rf.e61bb71d9725c7afbb131dd647b58e90.txt |    2 [32m+[m
+ ...017_jpg.rf.fc94ba59c02264fc15f7e5f149bedc41.txt |    1 [32m+[m
+ ...023_bmp.rf.f651c790bf00d3bedd72c23aa5b3b4cf.txt |    1 [32m+[m
+ ...023_jpg.rf.7edd73d74898a62a0023795208627c1b.txt |    1 [32m+[m
+ ...043_jpg.rf.7a5495a441c84f79d3b36df4e6cb1df3.txt |    1 [32m+[m
+ ...013_bmp.rf.97d7ba2cb73e6dddeaf0b9575a975383.txt |    1 [32m+[m
+ ...065_jpg.rf.3b6198c10e00e131079c788cda39dc68.txt |    2 [32m+[m
+ ...005_jpg.rf.e01ec5b82d9550b6603d3351b1496ee6.txt |    3 [32m+[m
+ ...007_jpg.rf.6ebcbbe81480a9bf0bca14a6f7510bb2.txt |    1 [32m+[m
+ ...074_jpg.rf.9425d74617ef658827dd7c6ec2e18233.txt |    2 [32m+[m
+ .../13_jpg.rf.6889caaa311c3b05bfa5d4323bdb5a9e.txt |    1 [32m+[m
+ .../1_jpg.rf.2f9da79dec35336087b153d3ef80b03d.txt  |    2 [32m+[m
+ .../39_jpg.rf.8f26d3286e85e02efd0db83708347f3f.txt |    1 [32m+[m
+ .../5_jpg.rf.6d0a21f410cf517f472d77819810e0c7.txt  |    1 [32m+[m
+ ...076_jpg.rf.405a79c07a24ff847cdb75429f17d91c.txt |    2 [32m+[m
+ ...079_bmp.rf.a205715faefc7db543c71a8be1877ad4.txt |    1 [32m+[m
+ ...28_JPEG.rf.bb6a379bfba80337dc03908ca7ec0a68.txt |   12 [32m+[m
+ ...33_JPEG.rf.f174f6ff1e45e2e8acdae819746dec17.txt |   12 [32m+[m
+ ...35_JPEG.rf.19bc0a8fb2aa96f86660c72b500ed771.txt |   10 [32m+[m
+ ...43_JPEG.rf.f09410d71201a60e0823d290d824e9bc.txt |    4 [32m+[m
+ ...80_JPEG.rf.418b491e715487024b967cfc7d560d09.txt |    3 [32m+[m
+ ...94_JPEG.rf.d500b7c4d4b326a56a87676b3928cdb5.txt |    4 [32m+[m
+ ...98_JPEG.rf.4b3b75bcb8f5a024708fa135375834f9.txt |    2 [32m+[m
+ ...13_JPEG.rf.c897202dcf89a7e2c39f95ee1b2d0089.txt |    3 [32m+[m
+ ...18_JPEG.rf.c93ea5ba7b39e91852f12c5a1f85e5da.txt |    3 [32m+[m
+ ...25_JPEG.rf.59514bb28cd58ad449caf87667d63b27.txt |    2 [32m+[m
+ ...28_JPEG.rf.5b60ccf1e064fbe9d05abe7e4c555ffc.txt |    2 [32m+[m
+ ...36_JPEG.rf.e4985ef0b29ce52d3cba629c938a7eb3.txt |    4 [32m+[m
+ ...45_JPEG.rf.bd4fdace1967763ae374bde5dd802a97.txt |    2 [32m+[m
+ ...72_JPEG.rf.53cdbe9e7a9d2b844c9739a97b3c5a17.txt |    1 [32m+[m
+ ...79_JPEG.rf.4f797ca1c8f127cc6c6b2b9a2e3db0fd.txt |    1 [32m+[m
+ ...92_JPEG.rf.f44486bbbb281b9af1ea781e986fa611.txt |    1 [32m+[m
+ ...16_JPEG.rf.ee09ef4cbdf25882d06bdcb6a35a6ead.txt |    1 [32m+[m
+ ...37_JPEG.rf.53a27f88d6cb9cfc50743795d6edbb09.txt |    2 [32m+[m
+ ...39_JPEG.rf.7e913ca74097f4afab3d5f8f191878bf.txt |    2 [32m+[m
+ ...V-0_jpg.rf.ea06ce7d609e6cd89ec54da042f85dec.txt |    2 [32m+[m
+ ...V-0_jpg.rf.0de4d35d704229ac1b1f1ef5e9126bca.txt |    3 [32m+[m
+ ...76_JPEG.rf.07e807391d489d6eb4a92e61fb89a94d.txt |    3 [32m+[m
+ ...V-0_jpg.rf.546faf3e8b6ff31a980e7fc3888d0437.txt |   11 [32m+[m
+ ...94_JPEG.rf.116df832a1fa7e4cf65b5f8d3aded234.txt |    1 [32m+[m
+ ...12_JPEG.rf.099b8d8bc49f4ee68e7301f833d96f4d.txt |    5 [32m+[m
+ ...V-0_jpg.rf.fcfead2f03894151bf8eb549a9004df1.txt |    4 [32m+[m
+ ...V-0_jpg.rf.cb4e37b835533b365f23f89a30fb2a12.txt |    3 [32m+[m
+ ...V-0_jpg.rf.0735e237968195330b92fd189b53e088.txt |    3 [32m+[m
+ ...39_JPEG.rf.23c56579f95dda142645f670e7b89097.txt |    4 [32m+[m
+ ...06_JPEG.rf.df88845d4cff84f08035e14447fdb700.txt |    7 [32m+[m
+ ...V-0_jpg.rf.d4fced04b93bfdaaedcf187b758ee168.txt |    3 [32m+[m
+ ...487_jpg.rf.16ad1d1f5193d1ae3ba32dbbb6cdc03f.txt |    1 [32m+[m
+ ...489_jpg.rf.503b68b0aaebb691fcb987a6d666f87f.txt |    2 [32m+[m
+ ...492_jpg.rf.5a5d333aeaeeeb87d9961b85fb69c989.txt |    2 [32m+[m
+ ...515_jpg.rf.303699ec3ed10827dd48c12c20243617.txt |    4 [32m+[m
+ ...517_jpg.rf.5d3e6aeca3921c4614ded728f2e68c39.txt |    5 [32m+[m
+ ...524_jpg.rf.5d3073d9f29bd61763073b0d79c373d3.txt |    1 [32m+[m
+ ...557_jpg.rf.a5d0f5dd282280a74fc5ea1e08f6af0b.txt |    1 [32m+[m
+ ...47-_jpg.rf.df69b8bad90c651ce52140c3d655a7a6.txt |    1 [32m+[m
+ ...50-_jpg.rf.6362fed0822c39d5c670faaf12c142ee.txt |    1 [32m+[m
+ ...-3-_jpg.rf.92e3fb16fa2e2ae9e2db4703d9aab92c.txt |    1 [32m+[m
+ ...33-_jpg.rf.d35167d2d88f4bdfac2b7e78a75f05bb.txt |    1 [32m+[m
+ ...43-_jpg.rf.3527597d6a544de048db9e3dbde4a986.txt |    1 [32m+[m
+ ...52-_jpg.rf.76e58aede9b483897597e8892a0a496a.txt |    1 [32m+[m
+ ...58-_jpg.rf.6d973cbb46cfda8e56c27744d7ac5519.txt |    3 [32m+[m
+ ...74-_jpg.rf.8f522acdc730673c892310b0fa65b8d8.txt |    1 [32m+[m
+ ...87-_jpg.rf.aaab9102f44b269d572f16648ba49c9a.txt |    1 [32m+[m
+ ...33-_jpg.rf.5a085b7397d5fff88e28f0839304f7a6.jpg |  Bin [31m0[m -> [32m41135[m bytes
+ ...33-_jpg.rf.e118284a1197b5c51e5ad73ad81af7b0.jpg |  Bin [31m0[m -> [32m40482[m bytes
+ ...33-_jpg.rf.ea66658ab57820497cd2613b4b81d2e2.jpg |  Bin [31m0[m -> [32m46848[m bytes
+ ...52-_jpg.rf.699297d9427a52fe8db17b340407f33a.jpg |  Bin [31m0[m -> [32m94224[m bytes
+ ...52-_jpg.rf.bcf70cdfe463fd2fc831b8ad5bf12d64.jpg |  Bin [31m0[m -> [32m116322[m bytes
+ ...52-_jpg.rf.f63f3385dcf23deb626d3109df1f52e5.jpg |  Bin [31m0[m -> [32m96193[m bytes
+ ...13-_jpg.rf.0bc30ed0e5b81c91541ff2f690451c0f.jpg |  Bin [31m0[m -> [32m59518[m bytes
+ ...13-_jpg.rf.c6b3f9be383fd916ff85c1cac223b7ce.jpg |  Bin [31m0[m -> [32m53887[m bytes
+ ...13-_jpg.rf.cf4a060220f873de81f278945f648ea5.jpg |  Bin [31m0[m -> [32m51204[m bytes
+ ...14-_jpg.rf.7942cc4b28e56de5641a1746876f0d56.jpg |  Bin [31m0[m -> [32m53053[m bytes
+ ...14-_jpg.rf.a308d884d83e5e42792a4a1ec3dff003.jpg |  Bin [31m0[m -> [32m55059[m bytes
+ ...14-_jpg.rf.ebd1c8a7672d478750c439a6afaa5af4.jpg |  Bin [31m0[m -> [32m59166[m bytes
+ ...70-_jpg.rf.3fbc217884e6310dac15aac55926ed60.jpg |  Bin [31m0[m -> [32m23096[m bytes
+ ...70-_jpg.rf.e189d622549eab5c9ac4de25e8e70a0f.jpg |  Bin [31m0[m -> [32m21973[m bytes
+ ...70-_jpg.rf.e8f61e013d494acadf5d748e22dc0273.jpg |  Bin [31m0[m -> [32m23089[m bytes
+ ...20-_jpg.rf.2a03a5bafd8bfab9b2471a94a34f0b4a.jpg |  Bin [31m0[m -> [32m60996[m bytes
+ ...20-_jpg.rf.5c8ce4d7da2a86b8d1f42249c14fe5a7.jpg |  Bin [31m0[m -> [32m72657[m bytes
+ ...20-_jpg.rf.f35839271f6e860d2ba02ba44b6210ee.jpg |  Bin [31m0[m -> [32m61163[m bytes
+ ...96-_jpg.rf.5e6b8cd634a936ba0039be52dfbba112.jpg |  Bin [31m0[m -> [32m29604[m bytes
+ ...96-_jpg.rf.76ab8584a83e8eaa33a3950573fad2c9.jpg |  Bin [31m0[m -> [32m28078[m bytes
+ ...96-_jpg.rf.a22dc155474d41e93762289e9d8d92a0.jpg |  Bin [31m0[m -> [32m28369[m bytes
+ ...14-_jpg.rf.2e7f67066056292a07374b2e617f506f.jpg |  Bin [31m0[m -> [32m36488[m bytes
+ ...14-_jpg.rf.8d0ef3fabc3775355ffde45fe9a4035d.jpg |  Bin [31m0[m -> [32m35106[m bytes
+ ...14-_jpg.rf.abd0288b749338ee7f93601a6949e658.jpg |  Bin [31m0[m -> [32m39130[m bytes
+ ...38-_jpg.rf.098c2e65d80a6b07c6770eba6077ef68.jpg |  Bin [31m0[m -> [32m28349[m bytes
+ ...38-_jpg.rf.2c774d80b7ff00f571b118604c4b4c02.jpg |  Bin [31m0[m -> [32m29111[m bytes
+ ...38-_jpg.rf.557da3688a0a5f9a772daff4aa03541d.jpg |  Bin [31m0[m -> [32m30329[m bytes
+ ...90-_jpg.rf.774303703d06372ed010e891083e6971.jpg |  Bin [31m0[m -> [32m69029[m bytes
+ ...90-_jpg.rf.afe27003ef292829a08d3c278ce35d3f.jpg |  Bin [31m0[m -> [32m81856[m bytes
+ ...90-_jpg.rf.ff2144f8448f2ff2d6347ada96807766.jpg |  Bin [31m0[m -> [32m69543[m bytes
+ ...82-_jpg.rf.584a1293c009f956e8b21b5c981700d2.jpg |  Bin [31m0[m -> [32m68980[m bytes
+ ...82-_jpg.rf.70e5c4d8666c2ca41e92a9378fddeea4.jpg |  Bin [31m0[m -> [32m57690[m bytes
+ ...82-_jpg.rf.c27f09acd7b00946dcad0fc4a1971abb.jpg |  Bin [31m0[m -> [32m57203[m bytes
+ ...58-_jpg.rf.295bf75f10f59696ca5e1bd6f6bca27d.jpg |  Bin [31m0[m -> [32m31155[m bytes
+ ...58-_jpg.rf.6b891f5e2e5e56a0f0516447de1f064b.jpg |  Bin [31m0[m -> [32m31320[m bytes
+ ...58-_jpg.rf.b0fa202f5641d0354842466856630c2a.jpg |  Bin [31m0[m -> [32m33485[m bytes
+ ...71-_jpg.rf.327fac42349407f48757871a8df34a19.jpg |  Bin [31m0[m -> [32m39043[m bytes
+ ...71-_jpg.rf.bab3212edf0e4e5564d4d3f9b0780d18.jpg |  Bin [31m0[m -> [32m38470[m bytes
+ ...71-_jpg.rf.cfde3d83bad72e7cadebcad5f58d55e6.jpg |  Bin [31m0[m -> [32m44168[m bytes
+ ...83-_jpg.rf.0432020e7f363795cd2c558e8b9a06cd.jpg |  Bin [31m0[m -> [32m40559[m bytes
+ ...83-_jpg.rf.3c15d3fcd5267fe62525a9b12aff94d7.jpg |  Bin [31m0[m -> [32m41182[m bytes
+ ...83-_jpg.rf.66f2873855cfe17a311bc7d38b9a1cb0.jpg |  Bin [31m0[m -> [32m47698[m bytes
+ ...76-_jpg.rf.3d895200947d75a8ecafb1edb4d37835.jpg |  Bin [31m0[m -> [32m45542[m bytes
+ ...76-_jpg.rf.72fb6217c0ca37dcc2fe8f087de47f09.jpg |  Bin [31m0[m -> [32m50957[m bytes
+ ...76-_jpg.rf.85ba9fb0481febfa319ed447bfb5acef.jpg |  Bin [31m0[m -> [32m46106[m bytes
+ ...84-_jpg.rf.89d558b1a73f5284c66c383a09d71f5a.jpg |  Bin [31m0[m -> [32m41371[m bytes
+ ...84-_jpg.rf.954cbcb6a5729b1e23a66bf622a3362f.jpg |  Bin [31m0[m -> [32m44428[m bytes
+ ...84-_jpg.rf.dd287b23ee8999ed966427e485622e21.jpg |  Bin [31m0[m -> [32m39048[m bytes
+ ...89-_jpg.rf.45017a60d90414cb978dc3d69749b60e.jpg |  Bin [31m0[m -> [32m24214[m bytes
+ ...89-_jpg.rf.7e9146362e935a0a79c9e648f7e94954.jpg |  Bin [31m0[m -> [32m24260[m bytes
+ ...89-_jpg.rf.d9bb12bf59dc44e045edc43fd011f540.jpg |  Bin [31m0[m -> [32m25676[m bytes
+ ...95-_jpg.rf.9eac2b6b6c6eff62ecc7b4e156fde25d.jpg |  Bin [31m0[m -> [32m31340[m bytes
+ ...95-_jpg.rf.c1fe2cc79922896955e52c8b32a24437.jpg |  Bin [31m0[m -> [32m32095[m bytes
+ ...95-_jpg.rf.fd68a1bec542d64df202b3834823a5a9.jpg |  Bin [31m0[m -> [32m31065[m bytes
+ ...076_jpg.rf.2a744da84bd16a5f4e38d870bcc2f1d6.jpg |  Bin [31m0[m -> [32m37417[m bytes
+ ...076_jpg.rf.85530093098f10c125e31daea1c5d0ee.jpg |  Bin [31m0[m -> [32m39312[m bytes
+ ...076_jpg.rf.d5a49132d57b16dd4f03b66e84036622.jpg |  Bin [31m0[m -> [32m37471[m bytes
+ ...075_bmp.rf.0389ff61c9bdb7626a2490034c478226.jpg |  Bin [31m0[m -> [32m37638[m bytes
+ ...075_bmp.rf.b0630e42e108a491ca48197d66d53cb8.jpg |  Bin [31m0[m -> [32m38910[m bytes
+ ...075_bmp.rf.d31c3b3626124dee2adeded710498b8e.jpg |  Bin [31m0[m -> [32m38084[m bytes
+ ...029_jpg.rf.b2f7b2774178e2994a40f0d40f5cf550.jpg |  Bin [31m0[m -> [32m43198[m bytes
+ ...029_jpg.rf.bf2f45fb007def02241ea98381b28db4.jpg |  Bin [31m0[m -> [32m44490[m bytes
+ ...029_jpg.rf.fd06fc75a5256a06b84d0eb216906adb.jpg |  Bin [31m0[m -> [32m42693[m bytes
+ ...004_bmp.rf.0c713f081871f41c490d9975daf69eda.jpg |  Bin [31m0[m -> [32m37559[m bytes
+ ...004_bmp.rf.396d9692b7d6aca93d78120c75c7e9e3.jpg |  Bin [31m0[m -> [32m37212[m bytes
+ ...004_bmp.rf.9923c35b34b7dc220951805bf466d0b8.jpg |  Bin [31m0[m -> [32m38571[m bytes
+ ...056_jpg.rf.4d18341c3a000126743cabc8afd65273.jpg |  Bin [31m0[m -> [32m46372[m bytes
+ ...056_jpg.rf.dc4c9b6772dd7c2e5c8f130e820a4af9.jpg |  Bin [31m0[m -> [32m44241[m bytes
+ ...056_jpg.rf.e22c1a8d411f9289fec93fee4dec9f38.jpg |  Bin [31m0[m -> [32m44389[m bytes
+ ...015_bmp.rf.06c77e75402679892ff2df904b2c12d1.jpg |  Bin [31m0[m -> [32m44052[m bytes
+ ...015_bmp.rf.17a91e49e8700d108040b5eb98a8997f.jpg |  Bin [31m0[m -> [32m42213[m bytes
+ ...015_bmp.rf.695f5855986e57d2c0f26040e2eff4e9.jpg |  Bin [31m0[m -> [32m42346[m bytes
+ ...054_bmp.rf.14ba2159c7aae2684b47286afa97a762.jpg |  Bin [31m0[m -> [32m34939[m bytes
+ ...054_bmp.rf.9e53a67c5daf45923e223a7388103e02.jpg |  Bin [31m0[m -> [32m36052[m bytes
+ ...054_bmp.rf.e24ab64f77fe39b51835624dbce5fbe9.jpg |  Bin [31m0[m -> [32m35836[m bytes
+ ...055_jpg.rf.109fa200cd84e0e8d0903b0803faed5c.jpg |  Bin [31m0[m -> [32m37255[m bytes
+ ...055_jpg.rf.1225e9bdad8cc3391041ef7b544fa14a.jpg |  Bin [31m0[m -> [32m38645[m bytes
+ ...055_jpg.rf.fc5ebbac596945fb007f97580a8cca89.jpg |  Bin [31m0[m -> [32m37631[m bytes
+ ...063_jpg.rf.250b39b68ecc15d4a37a077b259dc9b6.jpg |  Bin [31m0[m -> [32m38772[m bytes
+ ...063_jpg.rf.7001eaaaea9cfe254d94711b983dae6e.jpg |  Bin [31m0[m -> [32m40086[m bytes
+ ...063_jpg.rf.e0b626e2f5ad010975b291351ebdc2e3.jpg |  Bin [31m0[m -> [32m40307[m bytes
+ ...072_jpg.rf.01a6efd26dd69228d3cc11a74129108f.jpg |  Bin [31m0[m -> [32m39359[m bytes
+ ...072_jpg.rf.18c2fad5cd2af6e306197c4dceada828.jpg |  Bin [31m0[m -> [32m40207[m bytes
+ ...072_jpg.rf.a323907a0ba09cbe54f4c2d443f5ff4c.jpg |  Bin [31m0[m -> [32m38539[m bytes
+ ...080_jpg.rf.2f0ddd2868ef2ad9534cc9ed01193be8.jpg |  Bin [31m0[m -> [32m40047[m bytes
+ ...080_jpg.rf.606b94301609f4002ff941d277bb8c13.jpg |  Bin [31m0[m -> [32m41172[m bytes
+ ...080_jpg.rf.97fb0d59fe1fe99504ab8964bd36b28d.jpg |  Bin [31m0[m -> [32m39373[m bytes
+ .../17_jpg.rf.252a3c5b22613e53142c0ce3f0197a56.jpg |  Bin [31m0[m -> [32m39554[m bytes
+ .../17_jpg.rf.aae3c606e95b21170108e7ac07e3ac7d.jpg |  Bin [31m0[m -> [32m42675[m bytes
+ .../17_jpg.rf.c607055810b792b36702cf2023595c48.jpg |  Bin [31m0[m -> [32m38557[m bytes
+ ...40_JPEG.rf.2f24527d88454d8d34fcb6c904f6bede.jpg |  Bin [31m0[m -> [32m44141[m bytes
+ ...40_JPEG.rf.646ca2c9a0b63785fc7ee0bf284e4beb.jpg |  Bin [31m0[m -> [32m49814[m bytes
+ ...40_JPEG.rf.eb241d43e83c01e91ec951d0b284f1a0.jpg |  Bin [31m0[m -> [32m49814[m bytes
+ ...73_JPEG.rf.06d3f4f168ac25a8191b17f806608d71.jpg |  Bin [31m0[m -> [32m37401[m bytes
+ ...73_JPEG.rf.1df4766901ed14b0cd1baeb7e035be70.jpg |  Bin [31m0[m -> [32m35109[m bytes
+ ...73_JPEG.rf.b59aebfb3fb0cf0c4c4e0b1cad117439.jpg |  Bin [31m0[m -> [32m34723[m bytes
+ ...76_JPEG.rf.0d2ca711064437a19f0120caaaebdaba.jpg |  Bin [31m0[m -> [32m61406[m bytes
+ ...76_JPEG.rf.1d52b394afb27e38a8dedf27273231d3.jpg |  Bin [31m0[m -> [32m52681[m bytes
+ ...76_JPEG.rf.54a4bbd06c43be71ca7b27d87263de02.jpg |  Bin [31m0[m -> [32m53075[m bytes
+ ...14_JPEG.rf.225f501b79256efc4bf4e16859b40a15.jpg |  Bin [31m0[m -> [32m46234[m bytes
+ ...14_JPEG.rf.529321b4dd66a4bee53a9ea70fd824e8.jpg |  Bin [31m0[m -> [32m42594[m bytes
+ ...14_JPEG.rf.e6af59c8d6f6428dd2ee8dfb0a386399.jpg |  Bin [31m0[m -> [32m42191[m bytes
+ ...25_JPEG.rf.2ec5c2cd1202f6beead36f18ae2bc487.jpg |  Bin [31m0[m -> [32m34231[m bytes
+ ...25_JPEG.rf.5ed6729884a8405e8942cd0507bac401.jpg |  Bin [31m0[m -> [32m36784[m bytes
+ ...25_JPEG.rf.7eb7891aa96626bac987195033a6a5c4.jpg |  Bin [31m0[m -> [32m34826[m bytes
+ ...27_JPEG.rf.ab960448d1bc333dc79e9eb91451aa72.jpg |  Bin [31m0[m -> [32m39757[m bytes
+ ...27_JPEG.rf.ea294974b71a5f83cefff28119478a5f.jpg |  Bin [31m0[m -> [32m37036[m bytes
+ ...27_JPEG.rf.fc62c4fd5f3004b283a7633d92cdef35.jpg |  Bin [31m0[m -> [32m37343[m bytes
+ ...49_JPEG.rf.04b7be4b4c1c4030a123b12db6cf4b55.jpg |  Bin [31m0[m -> [32m26079[m bytes
+ ...49_JPEG.rf.14f1a74278d37e34abfb3aaa8bca4f7c.jpg |  Bin [31m0[m -> [32m25852[m bytes
+ ...49_JPEG.rf.fa42cc8151fedc8c9d0dad766a4c07ed.jpg |  Bin [31m0[m -> [32m26087[m bytes
+ ...51_JPEG.rf.0b597cf9f7d42b3715c9ce1d2288e06f.jpg |  Bin [31m0[m -> [32m26519[m bytes
+ ...51_JPEG.rf.2d44680245d0a822c03a77e8c02a83b4.jpg |  Bin [31m0[m -> [32m26732[m bytes
+ ...51_JPEG.rf.dd252e92699d5d37b5bf5c5d4414c64e.jpg |  Bin [31m0[m -> [32m27108[m bytes
+ ...14_JPEG.rf.34eb529d10e3c6548e594e18453bbc91.jpg |  Bin [31m0[m -> [32m40561[m bytes
+ ...14_JPEG.rf.6a06e97f1b3bf58e91267eb87a4f3862.jpg |  Bin [31m0[m -> [32m37246[m bytes
+ ...14_JPEG.rf.ed45b10ab0fbe32d11741f5b02bc5f66.jpg |  Bin [31m0[m -> [32m37762[m bytes
+ ...495_jpg.rf.01adb1a00ca7ad20fa6d2c0c2433efc2.jpg |  Bin [31m0[m -> [32m74544[m bytes
+ ...495_jpg.rf.6d3fa71db1b274cd1d053bd7478a8c66.jpg |  Bin [31m0[m -> [32m81254[m bytes
+ ...495_jpg.rf.7c078b6c4cf1c42037562f1857a0ef66.jpg |  Bin [31m0[m -> [32m90959[m bytes
+ ...521_jpg.rf.2c281018c7a99190cd1ddee5b9464d20.jpg |  Bin [31m0[m -> [32m72105[m bytes
+ ...521_jpg.rf.561c0200f29ef0a63ae60364bc53600d.jpg |  Bin [31m0[m -> [32m71392[m bytes
+ ...521_jpg.rf.648caf1cc68278277ec16c66535146a8.jpg |  Bin [31m0[m -> [32m86811[m bytes
+ ...547_jpg.rf.5131be8c47fc3a045f0d3e817735a693.jpg |  Bin [31m0[m -> [32m47823[m bytes
+ ...547_jpg.rf.d6ce8870f492c45919e1608684cb0546.jpg |  Bin [31m0[m -> [32m55177[m bytes
+ ...547_jpg.rf.e078cf7dc869065b86346f0d761dd0e7.jpg |  Bin [31m0[m -> [32m48343[m bytes
+ ...25-_jpg.rf.6d98a788af99773154cff9301ff50472.jpg |  Bin [31m0[m -> [32m32126[m bytes
+ ...25-_jpg.rf.8988d909c68f6e9296a2597d5839d782.jpg |  Bin [31m0[m -> [32m32293[m bytes
+ ...25-_jpg.rf.e84d8770ed7b2a110e8de972c6996483.jpg |  Bin [31m0[m -> [32m31842[m bytes
+ ...28-_jpg.rf.4e11fd22378bf25489b31f5de0bac574.jpg |  Bin [31m0[m -> [32m26905[m bytes
+ ...28-_jpg.rf.5b7c3f59dd99c378db17effac79926c9.jpg |  Bin [31m0[m -> [32m27658[m bytes
+ ...28-_jpg.rf.c5de8598d534b3f1774b672e98a4e50e.jpg |  Bin [31m0[m -> [32m26845[m bytes
+ ...33-_jpg.rf.5a085b7397d5fff88e28f0839304f7a6.txt |    1 [32m+[m
+ ...33-_jpg.rf.e118284a1197b5c51e5ad73ad81af7b0.txt |    1 [32m+[m
+ ...33-_jpg.rf.ea66658ab57820497cd2613b4b81d2e2.txt |    1 [32m+[m
+ ...52-_jpg.rf.699297d9427a52fe8db17b340407f33a.txt |    1 [32m+[m
+ ...52-_jpg.rf.bcf70cdfe463fd2fc831b8ad5bf12d64.txt |    1 [32m+[m
+ ...52-_jpg.rf.f63f3385dcf23deb626d3109df1f52e5.txt |    1 [32m+[m
+ ...13-_jpg.rf.0bc30ed0e5b81c91541ff2f690451c0f.txt |    1 [32m+[m
+ ...13-_jpg.rf.c6b3f9be383fd916ff85c1cac223b7ce.txt |    1 [32m+[m
+ ...13-_jpg.rf.cf4a060220f873de81f278945f648ea5.txt |    1 [32m+[m
+ ...14-_jpg.rf.7942cc4b28e56de5641a1746876f0d56.txt |    1 [32m+[m
+ ...14-_jpg.rf.a308d884d83e5e42792a4a1ec3dff003.txt |    1 [32m+[m
+ ...14-_jpg.rf.ebd1c8a7672d478750c439a6afaa5af4.txt |    1 [32m+[m
+ ...70-_jpg.rf.3fbc217884e6310dac15aac55926ed60.txt |    2 [32m+[m
+ ...70-_jpg.rf.e189d622549eab5c9ac4de25e8e70a0f.txt |    2 [32m+[m
+ ...70-_jpg.rf.e8f61e013d494acadf5d748e22dc0273.txt |    2 [32m+[m
+ ...20-_jpg.rf.2a03a5bafd8bfab9b2471a94a34f0b4a.txt |    1 [32m+[m
+ ...20-_jpg.rf.5c8ce4d7da2a86b8d1f42249c14fe5a7.txt |    1 [32m+[m
+ ...20-_jpg.rf.f35839271f6e860d2ba02ba44b6210ee.txt |    1 [32m+[m
+ ...96-_jpg.rf.5e6b8cd634a936ba0039be52dfbba112.txt |    1 [32m+[m
+ ...96-_jpg.rf.76ab8584a83e8eaa33a3950573fad2c9.txt |    1 [32m+[m
+ ...96-_jpg.rf.a22dc155474d41e93762289e9d8d92a0.txt |    1 [32m+[m
+ ...14-_jpg.rf.2e7f67066056292a07374b2e617f506f.txt |    1 [32m+[m
+ ...14-_jpg.rf.8d0ef3fabc3775355ffde45fe9a4035d.txt |    1 [32m+[m
+ ...14-_jpg.rf.abd0288b749338ee7f93601a6949e658.txt |    1 [32m+[m
+ ...38-_jpg.rf.098c2e65d80a6b07c6770eba6077ef68.txt |    1 [32m+[m
+ ...38-_jpg.rf.2c774d80b7ff00f571b118604c4b4c02.txt |    1 [32m+[m
+ ...38-_jpg.rf.557da3688a0a5f9a772daff4aa03541d.txt |    1 [32m+[m
+ ...90-_jpg.rf.774303703d06372ed010e891083e6971.txt |    1 [32m+[m
+ ...90-_jpg.rf.afe27003ef292829a08d3c278ce35d3f.txt |    1 [32m+[m
+ ...90-_jpg.rf.ff2144f8448f2ff2d6347ada96807766.txt |    1 [32m+[m
+ ...82-_jpg.rf.584a1293c009f956e8b21b5c981700d2.txt |    1 [32m+[m
+ ...82-_jpg.rf.70e5c4d8666c2ca41e92a9378fddeea4.txt |    1 [32m+[m
+ ...82-_jpg.rf.c27f09acd7b00946dcad0fc4a1971abb.txt |    1 [32m+[m
+ ...58-_jpg.rf.295bf75f10f59696ca5e1bd6f6bca27d.txt |    1 [32m+[m
+ ...58-_jpg.rf.6b891f5e2e5e56a0f0516447de1f064b.txt |    1 [32m+[m
+ ...58-_jpg.rf.b0fa202f5641d0354842466856630c2a.txt |    1 [32m+[m
+ ...71-_jpg.rf.327fac42349407f48757871a8df34a19.txt |    1 [32m+[m
+ ...71-_jpg.rf.bab3212edf0e4e5564d4d3f9b0780d18.txt |    1 [32m+[m
+ ...71-_jpg.rf.cfde3d83bad72e7cadebcad5f58d55e6.txt |    1 [32m+[m
+ ...83-_jpg.rf.0432020e7f363795cd2c558e8b9a06cd.txt |    1 [32m+[m
+ ...83-_jpg.rf.3c15d3fcd5267fe62525a9b12aff94d7.txt |    1 [32m+[m
+ ...83-_jpg.rf.66f2873855cfe17a311bc7d38b9a1cb0.txt |    1 [32m+[m
+ ...76-_jpg.rf.3d895200947d75a8ecafb1edb4d37835.txt |    1 [32m+[m
+ ...76-_jpg.rf.72fb6217c0ca37dcc2fe8f087de47f09.txt |    1 [32m+[m
+ ...76-_jpg.rf.85ba9fb0481febfa319ed447bfb5acef.txt |    1 [32m+[m
+ ...84-_jpg.rf.89d558b1a73f5284c66c383a09d71f5a.txt |    1 [32m+[m
+ ...84-_jpg.rf.954cbcb6a5729b1e23a66bf622a3362f.txt |    1 [32m+[m
+ ...84-_jpg.rf.dd287b23ee8999ed966427e485622e21.txt |    1 [32m+[m
+ ...89-_jpg.rf.45017a60d90414cb978dc3d69749b60e.txt |    1 [32m+[m
+ ...89-_jpg.rf.7e9146362e935a0a79c9e648f7e94954.txt |    1 [32m+[m
+ ...89-_jpg.rf.d9bb12bf59dc44e045edc43fd011f540.txt |    1 [32m+[m
+ ...95-_jpg.rf.9eac2b6b6c6eff62ecc7b4e156fde25d.txt |    1 [32m+[m
+ ...95-_jpg.rf.c1fe2cc79922896955e52c8b32a24437.txt |    1 [32m+[m
+ ...95-_jpg.rf.fd68a1bec542d64df202b3834823a5a9.txt |    1 [32m+[m
+ ...076_jpg.rf.2a744da84bd16a5f4e38d870bcc2f1d6.txt |    1 [32m+[m
+ ...076_jpg.rf.85530093098f10c125e31daea1c5d0ee.txt |    1 [32m+[m
+ ...076_jpg.rf.d5a49132d57b16dd4f03b66e84036622.txt |    1 [32m+[m
+ ...075_bmp.rf.0389ff61c9bdb7626a2490034c478226.txt |    1 [32m+[m
+ ...075_bmp.rf.b0630e42e108a491ca48197d66d53cb8.txt |    1 [32m+[m
+ ...075_bmp.rf.d31c3b3626124dee2adeded710498b8e.txt |    1 [32m+[m
+ ...029_jpg.rf.b2f7b2774178e2994a40f0d40f5cf550.txt |    1 [32m+[m
+ ...029_jpg.rf.bf2f45fb007def02241ea98381b28db4.txt |    1 [32m+[m
+ ...029_jpg.rf.fd06fc75a5256a06b84d0eb216906adb.txt |    1 [32m+[m
+ ...004_bmp.rf.0c713f081871f41c490d9975daf69eda.txt |    1 [32m+[m
+ ...004_bmp.rf.396d9692b7d6aca93d78120c75c7e9e3.txt |    1 [32m+[m
+ ...004_bmp.rf.9923c35b34b7dc220951805bf466d0b8.txt |    1 [32m+[m
+ ...056_jpg.rf.4d18341c3a000126743cabc8afd65273.txt |    1 [32m+[m
+ ...056_jpg.rf.dc4c9b6772dd7c2e5c8f130e820a4af9.txt |    1 [32m+[m
+ ...056_jpg.rf.e22c1a8d411f9289fec93fee4dec9f38.txt |    1 [32m+[m
+ ...015_bmp.rf.06c77e75402679892ff2df904b2c12d1.txt |    1 [32m+[m
+ ...015_bmp.rf.17a91e49e8700d108040b5eb98a8997f.txt |    1 [32m+[m
+ ...015_bmp.rf.695f5855986e57d2c0f26040e2eff4e9.txt |    1 [32m+[m
+ ...054_bmp.rf.14ba2159c7aae2684b47286afa97a762.txt |    1 [32m+[m
+ ...054_bmp.rf.9e53a67c5daf45923e223a7388103e02.txt |    1 [32m+[m
+ ...054_bmp.rf.e24ab64f77fe39b51835624dbce5fbe9.txt |    1 [32m+[m
+ ...055_jpg.rf.109fa200cd84e0e8d0903b0803faed5c.txt |    1 [32m+[m
+ ...055_jpg.rf.1225e9bdad8cc3391041ef7b544fa14a.txt |    1 [32m+[m
+ ...055_jpg.rf.fc5ebbac596945fb007f97580a8cca89.txt |    1 [32m+[m
+ ...063_jpg.rf.250b39b68ecc15d4a37a077b259dc9b6.txt |    1 [32m+[m
+ ...063_jpg.rf.7001eaaaea9cfe254d94711b983dae6e.txt |    1 [32m+[m
+ ...063_jpg.rf.e0b626e2f5ad010975b291351ebdc2e3.txt |    1 [32m+[m
+ ...072_jpg.rf.01a6efd26dd69228d3cc11a74129108f.txt |    1 [32m+[m
+ ...072_jpg.rf.18c2fad5cd2af6e306197c4dceada828.txt |    1 [32m+[m
+ ...072_jpg.rf.a323907a0ba09cbe54f4c2d443f5ff4c.txt |    1 [32m+[m
+ ...080_jpg.rf.2f0ddd2868ef2ad9534cc9ed01193be8.txt |    1 [32m+[m
+ ...080_jpg.rf.606b94301609f4002ff941d277bb8c13.txt |    1 [32m+[m
+ ...080_jpg.rf.97fb0d59fe1fe99504ab8964bd36b28d.txt |    1 [32m+[m
+ .../17_jpg.rf.252a3c5b22613e53142c0ce3f0197a56.txt |    1 [32m+[m
+ .../17_jpg.rf.aae3c606e95b21170108e7ac07e3ac7d.txt |    1 [32m+[m
+ .../17_jpg.rf.c607055810b792b36702cf2023595c48.txt |    1 [32m+[m
+ ...40_JPEG.rf.2f24527d88454d8d34fcb6c904f6bede.txt |    1 [32m+[m
+ ...40_JPEG.rf.646ca2c9a0b63785fc7ee0bf284e4beb.txt |    1 [32m+[m
+ ...40_JPEG.rf.eb241d43e83c01e91ec951d0b284f1a0.txt |    1 [32m+[m
+ ...73_JPEG.rf.06d3f4f168ac25a8191b17f806608d71.txt |    1 [32m+[m
+ ...73_JPEG.rf.1df4766901ed14b0cd1baeb7e035be70.txt |    1 [32m+[m
+ ...73_JPEG.rf.b59aebfb3fb0cf0c4c4e0b1cad117439.txt |    1 [32m+[m
+ ...76_JPEG.rf.0d2ca711064437a19f0120caaaebdaba.txt |    1 [32m+[m
+ ...76_JPEG.rf.1d52b394afb27e38a8dedf27273231d3.txt |    1 [32m+[m
+ ...76_JPEG.rf.54a4bbd06c43be71ca7b27d87263de02.txt |    1 [32m+[m
+ ...14_JPEG.rf.225f501b79256efc4bf4e16859b40a15.txt |    1 [32m+[m
+ ...14_JPEG.rf.529321b4dd66a4bee53a9ea70fd824e8.txt |    1 [32m+[m
+ ...14_JPEG.rf.e6af59c8d6f6428dd2ee8dfb0a386399.txt |    1 [32m+[m
+ ...25_JPEG.rf.2ec5c2cd1202f6beead36f18ae2bc487.txt |    2 [32m+[m
+ ...25_JPEG.rf.5ed6729884a8405e8942cd0507bac401.txt |    2 [32m+[m
+ ...25_JPEG.rf.7eb7891aa96626bac987195033a6a5c4.txt |    2 [32m+[m
+ ...27_JPEG.rf.ab960448d1bc333dc79e9eb91451aa72.txt |    3 [32m+[m
+ ...27_JPEG.rf.ea294974b71a5f83cefff28119478a5f.txt |    3 [32m+[m
+ ...27_JPEG.rf.fc62c4fd5f3004b283a7633d92cdef35.txt |    3 [32m+[m
+ ...49_JPEG.rf.04b7be4b4c1c4030a123b12db6cf4b55.txt |    1 [32m+[m
+ ...49_JPEG.rf.14f1a74278d37e34abfb3aaa8bca4f7c.txt |    1 [32m+[m
+ ...49_JPEG.rf.fa42cc8151fedc8c9d0dad766a4c07ed.txt |    1 [32m+[m
+ ...51_JPEG.rf.0b597cf9f7d42b3715c9ce1d2288e06f.txt |    2 [32m+[m
+ ...51_JPEG.rf.2d44680245d0a822c03a77e8c02a83b4.txt |    2 [32m+[m
+ ...51_JPEG.rf.dd252e92699d5d37b5bf5c5d4414c64e.txt |    2 [32m+[m
+ ...14_JPEG.rf.34eb529d10e3c6548e594e18453bbc91.txt |    2 [32m+[m
+ ...14_JPEG.rf.6a06e97f1b3bf58e91267eb87a4f3862.txt |    2 [32m+[m
+ ...14_JPEG.rf.ed45b10ab0fbe32d11741f5b02bc5f66.txt |    2 [32m+[m
+ ...495_jpg.rf.01adb1a00ca7ad20fa6d2c0c2433efc2.txt |    1 [32m+[m
+ ...495_jpg.rf.6d3fa71db1b274cd1d053bd7478a8c66.txt |    1 [32m+[m
+ ...495_jpg.rf.7c078b6c4cf1c42037562f1857a0ef66.txt |    1 [32m+[m
+ ...521_jpg.rf.2c281018c7a99190cd1ddee5b9464d20.txt |    1 [32m+[m
+ ...521_jpg.rf.561c0200f29ef0a63ae60364bc53600d.txt |    1 [32m+[m
+ ...521_jpg.rf.648caf1cc68278277ec16c66535146a8.txt |    1 [32m+[m
+ ...547_jpg.rf.5131be8c47fc3a045f0d3e817735a693.txt |    1 [32m+[m
+ ...547_jpg.rf.d6ce8870f492c45919e1608684cb0546.txt |    1 [32m+[m
+ ...547_jpg.rf.e078cf7dc869065b86346f0d761dd0e7.txt |    1 [32m+[m
+ ...25-_jpg.rf.6d98a788af99773154cff9301ff50472.txt |    1 [32m+[m
+ ...25-_jpg.rf.8988d909c68f6e9296a2597d5839d782.txt |    1 [32m+[m
+ ...25-_jpg.rf.e84d8770ed7b2a110e8de972c6996483.txt |    1 [32m+[m
+ ...28-_jpg.rf.4e11fd22378bf25489b31f5de0bac574.txt |    1 [32m+[m
+ ...28-_jpg.rf.5b7c3f59dd99c378db17effac79926c9.txt |    1 [32m+[m
+ ...28-_jpg.rf.c5de8598d534b3f1774b672e98a4e50e.txt |    1 [32m+[m
+ ...30-_jpg.rf.62096b564070fbb53090e470ef30e8c2.jpg |  Bin [31m0[m -> [32m27203[m bytes
+ ...59-_jpg.rf.5ea19e19745b83138968b49b0424042c.jpg |  Bin [31m0[m -> [32m122747[m bytes
+ ...72-_jpg.rf.8d4f15c644f6f6cc57c18605223248d2.jpg |  Bin [31m0[m -> [32m102445[m bytes
+ ...08-_jpg.rf.0dea2f64de9082d6926ed63faed6c24a.jpg |  Bin [31m0[m -> [32m47549[m bytes
+ ...11-_jpg.rf.01ef97ce307e702c2f64f303ca550ace.jpg |  Bin [31m0[m -> [32m53612[m bytes
+ ...JPG_jpg.rf.78510c42443abff6c1e5cd0291ad5e4d.jpg |  Bin [31m0[m -> [32m67007[m bytes
+ ...44-_jpg.rf.b939f6b9b279d6fd9281d24d8c62c96c.jpg |  Bin [31m0[m -> [32m27880[m bytes
+ ...58-_jpg.rf.3558c0e75bb3d4b339679acff4d78638.jpg |  Bin [31m0[m -> [32m50242[m bytes
+ ...020_bmp.rf.2d586b4b07f1cc5ad7666e84005c6f15.jpg |  Bin [31m0[m -> [32m40899[m bytes
+ ...006_jpg.rf.f6bf48e6000b284a59c88d3bc67d1406.jpg |  Bin [31m0[m -> [32m41473[m bytes
+ ...024_bmp.rf.46a2a099a5b38c92776614a14345ba75.jpg |  Bin [31m0[m -> [32m37488[m bytes
+ ...022_jpg.rf.245bb0c838979f54d13efc07e35e91e8.jpg |  Bin [31m0[m -> [32m40835[m bytes
+ ...082_jpg.rf.9712606d9f7e1b77bc4a859c71c3d853.jpg |  Bin [31m0[m -> [32m43269[m bytes
+ ...032_jpg.rf.8fb8ca7dcd46ce57318afc940931e2f2.jpg |  Bin [31m0[m -> [32m38426[m bytes
+ ...020_jpg.rf.82ff152a13ae235c7ad0a40de80df0f7.jpg |  Bin [31m0[m -> [32m31924[m bytes
+ ...068_jpg.rf.71c42b3f0308f0a0deb3181e6a7a0fd6.jpg |  Bin [31m0[m -> [32m40746[m bytes
+ .../38_jpg.rf.5529f3c924e414d223e5b6351564f2d8.jpg |  Bin [31m0[m -> [32m53614[m bytes
+ .../65_jpg.rf.602636366d6c18b9a2ccf3b42d13ea99.jpg |  Bin [31m0[m -> [32m38100[m bytes
+ ...016_jpg.rf.9eb98604101c9144911b7bf281e35c58.jpg |  Bin [31m0[m -> [32m43127[m bytes
+ ...39_JPEG.rf.cb6d6b63b5f1208998e226de127a7b66.jpg |  Bin [31m0[m -> [32m47178[m bytes
+ ...71_JPEG.rf.b8ee64a4a270717f693965eafd665f88.jpg |  Bin [31m0[m -> [32m44173[m bytes
+ ...90_JPEG.rf.be315ff9bb3897b5485951343fad7b4d.jpg |  Bin [31m0[m -> [32m46426[m bytes
+ ...00_JPEG.rf.b6a63695a64cc05626813085c3c8e353.jpg |  Bin [31m0[m -> [32m51057[m bytes
+ ...23_JPEG.rf.a4fad17cdd099b0368a31c756f91bc98.jpg |  Bin [31m0[m -> [32m45839[m bytes
+ ...74_JPEG.rf.c017b74d59a4059dd82df67062b2c9d6.jpg |  Bin [31m0[m -> [32m32320[m bytes
+ ...21_JPEG.rf.6fae838bfa91e9351ffa6054cf203017.jpg |  Bin [31m0[m -> [32m48446[m bytes
+ ...22_JPEG.rf.5d08c0dcb933bb19f014f260cc914983.jpg |  Bin [31m0[m -> [32m40251[m bytes
+ ...35_JPEG.rf.ba450f7c3410891a2644bfeee14d73c4.jpg |  Bin [31m0[m -> [32m38607[m bytes
+ ...47_JPEG.rf.0089c69ba0e36a2a9290787ddce2bf39.jpg |  Bin [31m0[m -> [32m30663[m bytes
+ ...50_JPEG.rf.93354e7f0f89326859799995c7953466.jpg |  Bin [31m0[m -> [32m26772[m bytes
+ ...40_JPEG.rf.67127827766c0171cd30440db0e86f64.jpg |  Bin [31m0[m -> [32m35133[m bytes
+ ...V-0_jpg.rf.f7f9542bb212c351dba588c8114b6e2b.jpg |  Bin [31m0[m -> [32m35761[m bytes
+ ...482_jpg.rf.ea4dffc0429c001ac88a84e1ee545564.jpg |  Bin [31m0[m -> [32m88368[m bytes
+ ...500_jpg.rf.e7d2d9e898d0a2e2c45f87ad4643fe66.jpg |  Bin [31m0[m -> [32m80898[m bytes
+ ...507_jpg.rf.e6c9d0c067c34564916742183d52ce22.jpg |  Bin [31m0[m -> [32m80286[m bytes
+ ...514_jpg.rf.4cacb262edc6469cc91d5ccdffd8abba.jpg |  Bin [31m0[m -> [32m70152[m bytes
+ ...534_jpg.rf.b682187340fc067b3f70f1f8928a79e8.jpg |  Bin [31m0[m -> [32m101020[m bytes
+ ...20-_jpg.rf.c851aa351d6c858305ab254adc93fcbf.jpg |  Bin [31m0[m -> [32m26996[m bytes
+ ...30-_jpg.rf.62096b564070fbb53090e470ef30e8c2.txt |    1 [32m+[m
+ ...59-_jpg.rf.5ea19e19745b83138968b49b0424042c.txt |    1 [32m+[m
+ ...72-_jpg.rf.8d4f15c644f6f6cc57c18605223248d2.txt |    1 [32m+[m
+ ...08-_jpg.rf.0dea2f64de9082d6926ed63faed6c24a.txt |    1 [32m+[m
+ ...11-_jpg.rf.01ef97ce307e702c2f64f303ca550ace.txt |    2 [32m+[m
+ ...JPG_jpg.rf.78510c42443abff6c1e5cd0291ad5e4d.txt |    1 [32m+[m
+ ...44-_jpg.rf.b939f6b9b279d6fd9281d24d8c62c96c.txt |    1 [32m+[m
+ ...58-_jpg.rf.3558c0e75bb3d4b339679acff4d78638.txt |    2 [32m+[m
+ ...020_bmp.rf.2d586b4b07f1cc5ad7666e84005c6f15.txt |    1 [32m+[m
+ ...006_jpg.rf.f6bf48e6000b284a59c88d3bc67d1406.txt |    1 [32m+[m
+ ...024_bmp.rf.46a2a099a5b38c92776614a14345ba75.txt |    1 [32m+[m
+ ...022_jpg.rf.245bb0c838979f54d13efc07e35e91e8.txt |    1 [32m+[m
+ ...082_jpg.rf.9712606d9f7e1b77bc4a859c71c3d853.txt |    2 [32m+[m
+ ...032_jpg.rf.8fb8ca7dcd46ce57318afc940931e2f2.txt |    1 [32m+[m
+ ...020_jpg.rf.82ff152a13ae235c7ad0a40de80df0f7.txt |    1 [32m+[m
+ ...068_jpg.rf.71c42b3f0308f0a0deb3181e6a7a0fd6.txt |    1 [32m+[m
+ .../38_jpg.rf.5529f3c924e414d223e5b6351564f2d8.txt |    1 [32m+[m
+ .../65_jpg.rf.602636366d6c18b9a2ccf3b42d13ea99.txt |    1 [32m+[m
+ ...016_jpg.rf.9eb98604101c9144911b7bf281e35c58.txt |    1 [32m+[m
+ ...39_JPEG.rf.cb6d6b63b5f1208998e226de127a7b66.txt |    1 [32m+[m
+ ...71_JPEG.rf.b8ee64a4a270717f693965eafd665f88.txt |    2 [32m+[m
+ ...90_JPEG.rf.be315ff9bb3897b5485951343fad7b4d.txt |    1 [32m+[m
+ ...00_JPEG.rf.b6a63695a64cc05626813085c3c8e353.txt |    1 [32m+[m
+ ...23_JPEG.rf.a4fad17cdd099b0368a31c756f91bc98.txt |    2 [32m+[m
+ ...74_JPEG.rf.c017b74d59a4059dd82df67062b2c9d6.txt |    1 [32m+[m
+ ...21_JPEG.rf.6fae838bfa91e9351ffa6054cf203017.txt |    3 [32m+[m
+ ...22_

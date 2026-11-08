@@ -1,0 +1,10 @@
+# YOUR OWN ESP32-CAM wooden-track dataset (the only source of val/test).
+# Copy to: data/datasets/wood-own/data.yaml
+# Folders: train|valid|test, each with images/ and labels/. Background images need EMPTY .txt files.
+path: 'C:\Users\sugho\Downloads\RailSafe-Main_project-main\RailSafe-Main_project-main\data\datasets\wood-own'
+train: train/images
+val: valid/images
+test: test/images
+nc: 1
+names:
+  - crack

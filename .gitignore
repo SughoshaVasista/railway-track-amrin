@@ -32,9 +32,11 @@ __pycache__/
 /backend/.venv/
 /backend/venv/
 /backend/.env
+/backend/admin-credentials*.json
 /backend/instance/*.db
 /backend/instance/*.sqlite
 /backend/instance/*.sqlite3
+/backend/instance/*.db-*
 /backend/uploads/**
 !/backend/uploads/.gitkeep
 /backend/.pytest_cache/
@@ -49,3 +51,9 @@ __pycache__/
 /data/datasets/
 /data/railway.db
 /runs/
+
+/data/raw/
+*.pt
+/backend.zip
+/backend/app.rar
+/ZEfb3cJOGf5v3IQGv35HLEXUmyej3UZvlBZ.txt

@@ -58,7 +58,12 @@ def main() -> None:
         corrupt = 0
         missing_labels = 0
         invalid_labels = 0
-        labels_dir = image_dir.parent / "labels" if image_dir.name == "images" else image_dir / "labels"
+        if image_dir.name == "images":
+            labels_dir = image_dir.parent / "labels"
+        elif image_dir.parent.name == "images":
+            labels_dir = image_dir.parent.parent / "labels" / image_dir.name
+        else:
+            labels_dir = image_dir / "labels"
         for image_path in images:
             total_images += 1
             try:

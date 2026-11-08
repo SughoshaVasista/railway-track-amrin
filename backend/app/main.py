@@ -19,6 +19,7 @@ from app.api.routers.users import router as users_router
 from app.db.session import build_engine, build_session_factory, get_db
 from app.errors import AppError
 from app.logging_config import configure_logging
+from app.services.demo_seed import seed_demo
 
 logger = logging.getLogger("amrin.api")
 
@@ -37,6 +38,9 @@ def create_app(settings: Settings | Mapping[str, Any] | None = None) -> FastAPI:
     application.state.settings = resolved_settings
     application.state.engine = build_engine(resolved_settings.database_url)
     application.state.session_factory = build_session_factory(application.state.engine)
+    if resolved_settings.demo_mode:
+        with application.state.session_factory.begin() as session:
+            seed_demo(session)
     application.include_router(auth_router)
     application.include_router(operations_router)
     application.include_router(telemetry_router)

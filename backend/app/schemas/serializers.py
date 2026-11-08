@@ -67,6 +67,7 @@ def serialize_alert(alert: Alert) -> dict[str, Any]:
         "city": alert.city,
         "assigned_worker_id": alert.assigned_worker.worker_id if alert.assigned_worker else None,
         "source": alert.source,
+        "demo": alert.source == "demo",
         "source_event_id": alert.source_event_id,
         "detected_at": _iso(alert.detected_at),
         "created_at": _iso(alert.created_at),
@@ -102,6 +103,7 @@ def serialize_device(device: Device) -> dict[str, Any]:
         "pi_status": device.pi_status,
         "diagnostics": device.diagnostics,
         "source": device.source,
+        "demo": device.source == "demo",
         "created_at": _iso(device.created_at),
         "updated_at": _iso(device.updated_at),
     }
@@ -140,6 +142,7 @@ def serialize_sensor_reading(reading: SensorReading) -> dict[str, Any]:
         "timestamp": _iso(reading.recorded_at),
         "updated_at": _iso(reading.recorded_at),
         "source": reading.source,
+        "demo": reading.source == "demo",
     }
 
 
@@ -206,6 +209,7 @@ def serialize_task(task: MaintenanceTask) -> dict[str, Any]:
         "admin_notes": task.admin_notes,
         "city": alert.city or (worker.city if worker else None),
         "source": task.source,
+        "demo": task.source == "demo" or alert.source == "demo",
         "created_at": _iso(task.created_at),
         "updated_at": _iso(task.updated_at),
         "evidence": [serialize_task_evidence(item) for item in task.evidence],
@@ -223,6 +227,7 @@ def serialize_track(track: Track) -> dict[str, Any]:
         "geometry": track.geometry,
         "city": track.city,
         "source": track.source,
+        "demo": track.source == "demo",
         "created_at": _iso(track.created_at),
         "updated_at": _iso(track.updated_at),
     }
@@ -241,6 +246,7 @@ def serialize_train(train: Train) -> dict[str, Any]:
         "gps": gps or None,
         "city": train.city,
         "source": train.source,
+        "demo": train.source == "demo",
         "measured_at": _iso(train.measured_at),
         "updated_at": _iso(train.updated_at),
     }
@@ -281,5 +287,6 @@ def serialize_event_log(item: EventLog) -> dict[str, Any]:
         "actor": item.actor.name if item.actor else "SYSTEM",
         "details": item.details,
         "source": item.source,
+        "demo": item.source == "demo",
         "timestamp": _iso(item.timestamp),
     }

@@ -1,0 +1,13 @@
+# FALLBACK ONLY (railwayanalysis/sleepercrack_only, CC BY 4.0). Prefer the data.yaml from the download.
+# UNVERIFIED class order. Probably concrete sleepers: check the images first.
+# Copy to: data/raw/sleepercrack_only/data.yaml
+path: 'C:\Users\sugho\Downloads\RailSafe-Main_project-main\RailSafe-Main_project-main\data\raw\sleepercrack_only'
+train: train/images
+val: valid/images
+test: test/images
+nc: 3
+names:
+  - crack_high
+  - crack_low
+  - crack_medium
+# Convert with: --keep crack_high crack_low crack_medium

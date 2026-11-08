@@ -1,0 +1,16 @@
+# FALLBACK ONLY. The Roboflow YOLOv8 zip already contains its own data.yaml: use that one.
+# UNVERIFIED: class ORDER must match the numbers in the label files. If you are not sure,
+# do not use this file; re-download the export instead.
+# Copy to: data/raw/wh1-buv5v-v1/data.yaml
+path: 'C:\Users\sugho\Downloads\RailSafe-Main_project-main\RailSafe-Main_project-main\data\raw\wh1-buv5v-v1'
+train: train/images
+val: valid/images
+test: test/images
+nc: 5
+names:
+  - Crack
+  - Holes
+  - Knot with Crack
+  - Dead Knot
+  - Live Knot
+# Convert with: --keep crack

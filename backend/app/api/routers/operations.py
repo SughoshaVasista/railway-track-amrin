@@ -1,3 +1,4 @@
+from datetime import datetime
 from pathlib import Path
 from uuid import uuid4
 
@@ -57,6 +58,11 @@ def _admin(user: User) -> bool:
     return user.role == "admin"
 
 
+def _reject_demo_write(user: User) -> None:
+    if user.source == "demo":
+        raise AppError(403, "demo_read_only", "Demo data is read-only. No changes were saved.")
+
+
 def _visible_task(task: MaintenanceTask, user: User) -> None:
     if not _admin(user) and task.assigned_worker_user_id != user.id:
         raise AppError(403, "forbidden", "This task is assigned to another worker")
@@ -68,13 +74,15 @@ def _get_alert(db: Session, alert_id: str, user: User | None = None) -> Alert:
     )
     if alert is None:
         raise AppError(404, "alert_not_found", "Alert was not found")
+    if user is not None and user.source == "demo" and alert.source != "demo":
+        raise AppError(404, "alert_not_found", "Alert was not found")
     if user is not None and not _admin(user):
         if alert.assigned_worker_user_id != user.id and (not user.city or alert.city != user.city):
             raise AppError(404, "alert_not_found", "Alert was not found")
     return alert
 
 
-def _get_task(db: Session, task_id: str) -> MaintenanceTask:
+def _get_task(db: Session, task_id: str, user: User | None = None) -> MaintenanceTask:
     task = db.scalar(
         select(MaintenanceTask)
         .options(
@@ -85,6 +93,8 @@ def _get_task(db: Session, task_id: str) -> MaintenanceTask:
         .where(MaintenanceTask.id == task_id)
     )
     if task is None:
+        raise AppError(404, "task_not_found", "Task was not found")
+    if user is not None and user.source == "demo" and task.source != "demo":
         raise AppError(404, "task_not_found", "Task was not found")
     return task
 
@@ -177,11 +187,15 @@ def list_alerts(
     db: Session = Depends(get_db),
 ) -> dict[str, list[dict]]:
     statement = select(Alert).options(joinedload(Alert.assigned_worker))
+    if user.source == "demo":
+        statement = statement.where(Alert.source == "demo")
     if not _admin(user):
         if user.city:
-            statement = statement.where(or_(func.lower(Alert.city) == user.city.lower(), Alert.assigned_worker_user_id == user.id))
+            statement = statement.where(or_(func.lower(Alert.city) == user.city.lower(), Alert.assigned_worker_user_id == user.id, Alert.source == "demo"))
         else:
-            statement = statement.where(Alert.assigned_worker_user_id == user.id)
+            statement = statement.where(or_(Alert.assigned_worker_user_id == user.id, Alert.source == "demo"))
+    elif user.source == "demo":
+        statement = statement.where(Alert.source == "demo")
     if severity and severity.upper() not in {"ALL", "ANY"}:
         normalized = severity.upper()
         if normalized not in {"S1", "S2", "S3"}:
@@ -197,7 +211,7 @@ def list_alerts(
     if defect_type:
         statement = statement.where(Alert.defect.ilike(f"%{defect_type.strip()}%"))
     if city:
-        statement = statement.where(Alert.city.ilike(city.strip()))
+        statement = statement.where(or_(Alert.city.ilike(city.strip()), Alert.source == "demo"))
     if from_:
         statement = statement.where(Alert.detected_at >= from_)
     if to:
@@ -211,6 +225,23 @@ def get_alert(alert_id: str, user: User = Depends(any_user), db: Session = Depen
     return serialize_alert(_get_alert(db, alert_id, user))
 
 
+@router.get("/alerts/{alert_id}/image")
+def get_alert_image(
+    alert_id: str,
+    request: Request,
+    user: User = Depends(any_user),
+    db: Session = Depends(get_db),
+) -> FileResponse:
+    alert = _get_alert(db, alert_id, user)
+    if not alert.image_url:
+        raise AppError(404, "alert_image_not_found", "This alert has no stored image")
+    root = (Path(request.app.state.settings.upload_folder).resolve() / "ml-alerts").resolve()
+    path = (root / f"{alert.id}.jpg").resolve()
+    if path.parent != root or not path.is_file():
+        raise AppError(404, "alert_image_not_found", "Alert image was not found")
+    return FileResponse(path, media_type="image/jpeg", filename=f"{alert.id}.jpg")
+
+
 @router.post("/alerts/{alert_id}/acknowledge")
 def acknowledge_alert(
     alert_id: str,
@@ -218,6 +249,7 @@ def acknowledge_alert(
     actor: User = Depends(admin_user),
     db: Session = Depends(get_db),
 ) -> dict:
+    _reject_demo_write(actor)
     alert = _get_alert(db, alert_id)
     _ensure_transition(alert, "ACKNOWLEDGED")
     _audit_alert_change(db, alert, actor, "alert_acknowledged", "ACKNOWLEDGED", body.notes if body else None)
@@ -232,6 +264,7 @@ def resolve_alert(
     actor: User = Depends(admin_user),
     db: Session = Depends(get_db),
 ) -> dict:
+    _reject_demo_write(actor)
     alert = _get_alert(db, alert_id)
     _ensure_transition(alert, "RESOLVED")
     _audit_alert_change(db, alert, actor, "alert_resolved", "RESOLVED", body.notes if body else None)
@@ -246,6 +279,7 @@ def false_positive_alert(
     actor: User = Depends(admin_user),
     db: Session = Depends(get_db),
 ) -> dict:
+    _reject_demo_write(actor)
     alert = _get_alert(db, alert_id)
     _ensure_transition(alert, "FALSE_POSITIVE")
     _audit_alert_change(db, alert, actor, "alert_marked_false_positive", "FALSE_POSITIVE", body.notes if body else None)
@@ -260,6 +294,7 @@ def assign_alert(
     actor: User = Depends(admin_user),
     db: Session = Depends(get_db),
 ) -> dict:
+    _reject_demo_write(actor)
     alert = _get_alert(db, alert_id)
     worker = _resolve_worker(db, body.worker_id)
     if alert.status == "ACKNOWLEDGED":
@@ -298,6 +333,7 @@ def change_alert_priority(
     actor: User = Depends(admin_user),
     db: Session = Depends(get_db),
 ) -> dict:
+    _reject_demo_write(actor)
     alert = _get_alert(db, alert_id)
     if alert.status not in ALERT_OPEN_STATES:
         raise AppError(409, "invalid_alert_transition", "Priority cannot be changed on a closed alert")
@@ -341,6 +377,10 @@ def list_tasks(
     )
     if not _admin(user):
         statement = statement.where(MaintenanceTask.assigned_worker_user_id == user.id)
+        if user.source == "demo":
+            statement = statement.where(MaintenanceTask.source == "demo")
+    elif user.source == "demo":
+        statement = statement.where(MaintenanceTask.source == "demo")
     elif worker_id:
         worker = db.scalar(select(User).where(or_(User.id == worker_id, User.worker_id == worker_id)))
         if worker is None:
@@ -391,6 +431,7 @@ def create_task(
     actor: User = Depends(admin_user),
     db: Session = Depends(get_db),
 ) -> dict:
+    _reject_demo_write(actor)
     alert = _get_alert(db, body.alert_id)
     worker = _resolve_worker(db, body.worker_id)
     task = _create_task(db, alert, worker, actor, body.notes)
@@ -405,10 +446,12 @@ def assign_existing_task(
     actor: User = Depends(admin_user),
     db: Session = Depends(get_db),
 ) -> dict:
-    task = _get_task(db, task_id)
+    task = _get_task(db, task_id, actor)
     if task.status != "ASSIGNED":
         raise AppError(409, "task_already_started", "Only tasks that have not been accepted can be reassigned")
     worker = _resolve_worker(db, body.worker_id)
+    if (task.source == "demo") != (worker.source == "demo"):
+        raise AppError(404, "worker_not_found", "Choose an active worker from the same data set as this task")
     previous_worker_id = task.assigned_worker_user_id
     previous_alert_status = task.alert.status
     task.assigned_worker = worker
@@ -446,7 +489,7 @@ def unassign_task(
     actor: User = Depends(admin_user),
     db: Session = Depends(get_db),
 ) -> dict:
-    task = _get_task(db, task_id)
+    task = _get_task(db, task_id, actor)
     if task.status != "ASSIGNED":
         raise AppError(409, "task_already_started", "Only tasks that have not been accepted can be unassigned")
     if task.assigned_worker_user_id is None:
@@ -487,6 +530,7 @@ def update_task_status(
     actor: User = Depends(any_user),
     db: Session = Depends(get_db),
 ) -> dict:
+    _reject_demo_write(actor)
     task = _get_task(db, task_id)
     _visible_task(task, actor)
     if body.status == "COMPLETED":
@@ -541,6 +585,7 @@ def submit_task_for_review(
     actor: User = Depends(any_user),
     db: Session = Depends(get_db),
 ) -> dict:
+    _reject_demo_write(actor)
     task = _get_task(db, task_id)
     _visible_task(task, actor)
     if actor.role != "worker":
@@ -586,6 +631,7 @@ def review_task(
     actor: User = Depends(admin_user),
     db: Session = Depends(get_db),
 ) -> dict:
+    _reject_demo_write(actor)
     task = _get_task(db, task_id)
     if task.status != "AWAITING_REVIEW":
         raise AppError(409, "task_not_awaiting_review", "Only submitted tasks can be reviewed")
@@ -642,9 +688,10 @@ async def upload_task_evidence(
     file: UploadFile = File(...),
     notes: str | None = Form(default=None, max_length=4000),
     evidence_type: str = Form(default="repair"),
-    actor: User = Depends(any_user),
+    actor: User = Depends(require_roles("worker")),
     db: Session = Depends(get_db),
 ) -> dict:
+    _reject_demo_write(actor)
     task = _get_task(db, task_id)
     _visible_task(task, actor)
     if task.status != "IN_PROGRESS":
@@ -708,7 +755,7 @@ def get_task_evidence_file(
     actor: User = Depends(any_user),
     db: Session = Depends(get_db),
 ) -> FileResponse:
-    task = _get_task(db, task_id)
+    task = _get_task(db, task_id, actor)
     _visible_task(task, actor)
     evidence = db.scalar(
         select(TaskEvidence).where(TaskEvidence.id == evidence_id, TaskEvidence.task_id == task_id)

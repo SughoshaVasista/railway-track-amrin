@@ -1,0 +1,6 @@
+ultralytics>=8.2
+requests>=2.31
+python-dotenv>=1.0
+pyserial>=3.5
+pynmea2>=1.19
+gpiozero>=2.0

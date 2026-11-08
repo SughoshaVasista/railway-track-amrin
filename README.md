@@ -29,7 +29,7 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 # Run these commands from the repository root.
 if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 # In root .env, set VITE_API_BASE_URL=http://localhost:8000/api and VITE_DEMO_AUTH=false.
-npm install
+npm ci
 npm run dev
 ```
 
@@ -43,7 +43,21 @@ Restart Vite after changing `.env`. Keep `ML_INGEST_TOKEN`, JWT secrets, and all
 
 ```powershell
 npm run build
+npm run lint
 ```
+
+## Tests and database setup
+
+The backend dependencies are pinned in `backend/requirements.txt`; its Alembic migrations create a fresh database. From the repository root, use the backend directory and run migrations before starting the API:
+
+```powershell
+Set-Location .\backend
+python -m pip install -r requirements.txt
+alembic upgrade head
+python -m pytest
+```
+
+The test suite uses isolated temporary SQLite databases. The frontend uses the committed npm lockfile (`npm ci`) and has ESLint and Prettier scripts. CI runs the backend tests and the production Vite build on pushes and pull requests.
 
 SQLite is the local persistent default in `backend/instance/`. Set backend `DATABASE_URL` to a PostgreSQL SQLAlchemy URL for deployment. Run Alembic migrations before starting the API. Never commit `.env`, databases, uploaded evidence, virtual environments, or generated build outputs.
 

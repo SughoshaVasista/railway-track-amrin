@@ -43,6 +43,7 @@ def get_current_user(
     if (
         user is None
         or not user.is_active
+        or claims.get("ver", 0) != user.auth_version
         or user.approval_status != "approved"
         or user.role not in {"admin", "worker"}
     ):

@@ -8,6 +8,19 @@ class LoginRequest(BaseModel):
     password: str = Field(min_length=1, max_length=256)
 
 
+class ForgotPasswordRequest(BaseModel):
+    email: EmailStr
+
+
+class ResetPasswordRequest(BaseModel):
+    token: str = Field(min_length=32, max_length=256)
+    password: str = Field(min_length=10, max_length=256)
+
+
+class AdminPasswordResetRequest(BaseModel):
+    password: str = Field(min_length=10, max_length=256)
+
+
 class RegisterRequest(BaseModel):
     name: str = Field(min_length=1, max_length=160)
     email: EmailStr
@@ -54,6 +67,7 @@ class LoginResponse(BaseModel):
     name: str
     worker_id: str | None
     city: str | None
+    source: str = "unknown"
 
 
 class RegistrationResponse(BaseModel):

@@ -52,6 +52,7 @@ class User(TimestampMixin, Base):
     city: Mapped[str | None] = mapped_column(String(80), index=True)
     worker_id: Mapped[str | None] = mapped_column(String(64), unique=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    auth_version: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     source: Mapped[str] = mapped_column(String(32), default="unknown", nullable=False)
 
     assigned_alerts: Mapped[list["Alert"]] = relationship(back_populates="assigned_worker")
@@ -59,6 +60,16 @@ class User(TimestampMixin, Base):
     uploaded_evidence: Mapped[list["TaskEvidence"]] = relationship(back_populates="uploaded_by")
     alert_history: Mapped[list["AlertHistory"]] = relationship(back_populates="actor")
     events: Mapped[list["EventLog"]] = relationship(back_populates="actor")
+
+
+class PasswordResetToken(Base):
+    __tablename__ = "password_reset_tokens"
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, nullable=False)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, index=True)
+    used_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now, nullable=False)
 
 
 class Alert(TimestampMixin, Base):

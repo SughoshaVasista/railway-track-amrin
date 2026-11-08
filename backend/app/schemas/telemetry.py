@@ -61,6 +61,7 @@ class SensorReadingsBatch(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     device_id: str = Field(min_length=1, max_length=64)
+    source: Literal["esp32", "hardware", "raspberry_pi"] = "esp32"
     readings: list[SensorReadingInput] = Field(min_length=1, max_length=100)
 
 
@@ -69,5 +70,5 @@ class DeviceRegistration(BaseModel):
 
     id: str = Field(min_length=1, max_length=64)
     name: str = Field(min_length=1, max_length=160)
-    platform: str | None = Field(default="Raspberry Pi", max_length=120)
+    platform: str | None = Field(default="ESP32", max_length=120)
     city: str | None = Field(default=None, max_length=80)

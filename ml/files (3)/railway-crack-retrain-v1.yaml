@@ -1,0 +1,10 @@
+# Existing steel-rail dataset your old best.pt came from (path fixed for THIS PC).
+# Copy to: data/raw/railway-crack-retrain-v1/data.yaml  (next to train/, val/, test/)
+path: 'C:\Users\sugho\Downloads\RailSafe-Main_project-main\RailSafe-Main_project-main\data\raw\railway-crack-retrain-v1'
+train: train/images
+val: val/images
+test: test/images
+nc: 1
+names:
+  - railway-cracks
+# Convert with: --keep railway-cracks

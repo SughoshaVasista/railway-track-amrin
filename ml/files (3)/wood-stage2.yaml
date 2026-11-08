@@ -1,0 +1,8 @@
+# REFERENCE: written automatically by: ml.prepare_wood_dataset --own ... --output data/datasets/wood-stage2
+path: 'C:\Users\sugho\Downloads\RailSafe-Main_project-main\RailSafe-Main_project-main\data\datasets\wood-stage2'
+train: train/images
+val: valid/images
+test: test/images
+nc: 1
+names:
+  - crack

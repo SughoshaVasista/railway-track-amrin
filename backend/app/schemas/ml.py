@@ -15,8 +15,8 @@ class MlEventRequest(BaseModel):
     defect: str = Field(min_length=1, max_length=120)
     severity: Literal["S1", "S2", "S3"]
     confidence: float = Field(ge=0, le=1)
-    latitude: float = Field(ge=-90, le=90)
-    longitude: float = Field(ge=-180, le=180)
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
     gps_accuracy_m: float | None = Field(default=None, ge=0, le=100000)
     chainage: str | None = Field(default=None, max_length=80)
     track: str | None = Field(default=None, max_length=80)

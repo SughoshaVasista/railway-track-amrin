@@ -1,4 +1,9 @@
+import hashlib
+import logging
+import secrets
+import smtplib
 from datetime import datetime, timedelta, timezone
+from email.message import EmailMessage
 from uuid import uuid4
 
 import jwt
@@ -9,13 +14,14 @@ from sqlalchemy.orm import Session
 
 from app.db.session import get_db
 from app.errors import AppError
-from app.models import EventLog, User
-from app.schemas.auth import LoginRequest, LoginResponse, PublicUser, RegisterRequest, RegistrationResponse
+from app.models import EventLog, PasswordResetToken, User
+from app.schemas.auth import ForgotPasswordRequest, LoginRequest, LoginResponse, PublicUser, RegisterRequest, RegistrationResponse, ResetPasswordRequest
 from app.schemas.serializers import serialize_user
 from app.security.dependencies import get_current_user
 from app.security.passwords import hash_password, verify_password
 
 router = APIRouter(prefix="/api/auth", tags=["authentication"])
+logger = logging.getLogger("amrin.auth")
 
 
 def _create_access_token(request: Request, user: User) -> str:
@@ -25,15 +31,96 @@ def _create_access_token(request: Request, user: User) -> str:
     now = datetime.now(timezone.utc)
     expires = now + timedelta(minutes=request.app.state.settings.jwt_access_token_minutes)
     return jwt.encode(
-        {"sub": user.id, "iat": now, "exp": expires, "jti": uuid4().hex, "type": "access"},
+        {"sub": user.id, "iat": now, "exp": expires, "jti": uuid4().hex, "ver": user.auth_version, "type": "access"},
         secret,
         algorithm="HS256",
     )
 
 
+def _send_password_reset(request: Request, email: str, token: str) -> None:
+    settings = request.app.state.settings
+    link = f"{settings.frontend_base_url.rstrip('/')}/reset-password?token={token}"
+    if not all((settings.smtp_host, settings.smtp_from)):
+        if settings.environment.lower() not in {"production", "prod"}:
+            logger.info("Development password reset link for %s: %s", email, link)
+        else:
+            logger.error("Password reset delivery is not configured")
+        return
+    message = EmailMessage()
+    message["Subject"] = "RailSafe password reset"
+    message["From"] = settings.smtp_from
+    message["To"] = email
+    message.set_content(f"Use this link to reset your RailSafe password. It expires in 30 minutes:\n\n{link}\n\nIf you did not request this, ignore this email.")
+    with smtplib.SMTP(settings.smtp_host, settings.smtp_port, timeout=10) as smtp:
+        smtp.starttls()
+        if settings.smtp_username:
+            smtp.login(settings.smtp_username, settings.smtp_password)
+        smtp.send_message(message)
+
+
+@router.post("/forgot-password", status_code=status.HTTP_202_ACCEPTED)
+def forgot_password(payload: ForgotPasswordRequest, request: Request, db: Session = Depends(get_db)) -> dict:
+    email = str(payload.email).strip().lower()
+    user = db.scalar(select(User).where(func.lower(User.email) == email, User.is_active.is_(True)))
+    if user is not None and user.password_hash:
+        raw_token = secrets.token_urlsafe(32)
+        now = datetime.now(timezone.utc)
+        db.query(PasswordResetToken).filter(
+            PasswordResetToken.user_id == user.id,
+            PasswordResetToken.used_at.is_(None),
+        ).update({PasswordResetToken.used_at: now}, synchronize_session=False)
+        reset_record = PasswordResetToken(
+            id=uuid4().hex,
+            user_id=user.id,
+            token_hash=hashlib.sha256(raw_token.encode()).hexdigest(),
+            expires_at=now + timedelta(minutes=30),
+        )
+        db.add(reset_record)
+        db.commit()
+        try:
+            _send_password_reset(request, user.email, raw_token)
+        except (OSError, smtplib.SMTPException):
+            logger.exception("Password reset delivery failed")
+            db.delete(reset_record)
+            db.commit()
+    return {"message": "If an active account matches that email, password reset instructions will be sent."}
+
+
+@router.post("/reset-password")
+def reset_password(payload: ResetPasswordRequest, db: Session = Depends(get_db)) -> dict:
+    token_hash = hashlib.sha256(payload.token.encode()).hexdigest()
+    reset = db.scalar(select(PasswordResetToken).where(PasswordResetToken.token_hash == token_hash))
+    now = datetime.now(timezone.utc)
+    if reset is None or reset.used_at is not None or reset.expires_at.replace(tzinfo=timezone.utc) <= now:
+        raise AppError(400, "invalid_reset_token", "The password reset link is invalid or expired")
+    user = db.get(User, reset.user_id)
+    if user is None or not user.is_active:
+        raise AppError(400, "invalid_reset_token", "The password reset link is invalid or expired")
+    user.password_hash = hash_password(payload.password)
+    user.auth_version += 1
+    reset.used_at = now
+    db.query(PasswordResetToken).filter(
+        PasswordResetToken.user_id == user.id,
+        PasswordResetToken.id != reset.id,
+        PasswordResetToken.used_at.is_(None),
+    ).update({PasswordResetToken.used_at: now}, synchronize_session=False)
+    db.add(EventLog(actor_user_id=user.id, action="password_reset", object_type="user", object_id=user.id,
+                    summary="Account password reset", details={}, source="auth"))
+    db.commit()
+    return {"message": "Password updated. Sign in with the new password."}
+
+
 @router.post("/login", response_model=LoginResponse)
 def login(payload: LoginRequest, request: Request, db: Session = Depends(get_db)) -> dict:
     identifier = payload.username.strip().lower()
+    if request.app.state.settings.demo_mode and identifier in {"admin", "demo-admin"} and payload.password == "admin":
+        demo_admin = db.get(User, "demo-admin")
+        if demo_admin is not None and demo_admin.is_active and demo_admin.approval_status == "approved":
+            return {"token": _create_access_token(request, demo_admin), "role": "admin", "name": demo_admin.name, "worker_id": None, "city": None, "source": demo_admin.source}
+    if request.app.state.settings.demo_mode and identifier in {"worker", "worker-01"} and payload.password == "worker":
+        demo_worker = db.get(User, "worker-01")
+        if demo_worker is not None and demo_worker.is_active and demo_worker.approval_status == "approved":
+            return {"token": _create_access_token(request, demo_worker), "role": "worker", "name": demo_worker.name, "worker_id": demo_worker.worker_id, "city": demo_worker.city, "source": demo_worker.source}
     user = db.scalar(
         select(User).where(or_(func.lower(User.email) == identifier, func.lower(User.username) == identifier))
     )
@@ -50,6 +137,7 @@ def login(payload: LoginRequest, request: Request, db: Session = Depends(get_db)
         "name": user.name,
         "worker_id": user.worker_id,
         "city": user.city,
+        "source": user.source,
     }
 
 

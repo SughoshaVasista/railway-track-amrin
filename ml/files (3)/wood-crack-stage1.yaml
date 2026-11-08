@@ -1,0 +1,9 @@
+# REFERENCE: ml.prepare_wood_dataset writes this automatically to
+# data/datasets/wood-crack-stage1/data.yaml. You do not need to create it.
+path: 'C:\Users\sugho\Downloads\RailSafe-Main_project-main\RailSafe-Main_project-main\data\datasets\wood-crack-stage1'
+train: train/images
+val: valid/images
+test: test/images
+nc: 1
+names:
+  - crack

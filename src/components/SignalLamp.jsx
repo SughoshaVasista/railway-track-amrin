@@ -17,6 +17,13 @@ const stateMap = {
 }
 
 export default function SignalLamp({ state, severity, label }) {
-  const [tone, defaultLabel] = stateMap[String(state || severity || 'offline').toLowerCase()] || ['offline', 'OFFLINE']
-  return <span className={`signal-lamp signal-${tone}`}><i aria-hidden="true" /><span>{label || defaultLabel}</span></span>
+  const [tone, defaultLabel] = stateMap[
+    String(state || severity || 'offline').toLowerCase()
+  ] || ['offline', 'OFFLINE']
+  return (
+    <span className={`signal-lamp signal-${tone}`}>
+      <i aria-hidden="true" />
+      <span>{label || defaultLabel}</span>
+    </span>
+  )
 }
